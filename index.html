@@ -395,8 +395,8 @@
   .hero h1{font-size:clamp(34px,4.6vw,58px);line-height:1.06;color:var(--ink-light);}
   .hero h1 em{font-style:italic;font-weight:500;background:linear-gradient(100deg,var(--citrino),var(--quartzo) 60%,var(--amethyst));-webkit-background-clip:text;background-clip:text;color:transparent;}
   .hero-sub{margin-top:22px;font-size:18px;color:var(--ink-mute);max-width:480px;}
-  .specimen-stack{position:relative;height:560px;align-self:start;margin-top:-32px;}
-  .tag{position:absolute;width:230px;background:var(--parchment);border-radius:4px;padding:20px 18px 18px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.06);}
+  .specimen-stack{position:relative;height:480px;align-self:center;}
+  .tag{position:absolute;width:250px;background:var(--parchment);border-radius:4px;padding:20px 18px 18px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.06);}
   .tag::before{content:'';position:absolute;top:0;left:0;right:0;height:14px;background-image:radial-gradient(circle at 14px 7px, transparent 5px, var(--parchment) 5.5px);background-size:28px 14px;background-repeat:repeat-x;}
   .tag .hole{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:var(--bg);box-shadow:inset 0 1px 3px rgba(0,0,0,0.5);}
   .tag-num{font-family:'Poppins',sans-serif;font-size:10.5px;color:var(--ink-soft);letter-spacing:0.06em;margin-top:8px;font-weight:600;}
@@ -404,9 +404,8 @@
   .tag-price{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(240,228,207,0.25);font-family:'Poppins',sans-serif;font-size:13px;color:var(--ink-soft);}
   .tag-price b{color:var(--ink);font-size:15px;}
   .tag-photo{width:100%;aspect-ratio:4/3;object-fit:contain;background:var(--parchment);border-radius:4px;margin-top:4px;display:block;box-shadow:0 6px 14px rgba(0,0,0,0.2);}
-  .t1{top:0;left:10%;transform:rotate(-7deg);z-index:3;}
-  .t2{top:96px;left:44%;transform:rotate(5deg);z-index:4;}
-  .t3{top:210px;left:6%;transform:rotate(3deg);z-index:2;}
+  .t1{top:0;left:14%;transform:rotate(-6deg);z-index:3;}
+  .t2{top:170px;left:38%;transform:rotate(5deg);z-index:4;}
   .tag-rating{display:flex;align-items:center;gap:6px;margin-top:6px;font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--ink-soft);}
   .tag-rating .stars{color:var(--gold);font-size:11px;letter-spacing:1px;}
   .tag-badge{font-family:'Poppins',sans-serif;font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;background:var(--amethyst);color:#fff;padding:2px 10px;border-radius:10px;display:inline-block;}
@@ -1269,87 +1268,45 @@
             PARA FORTALECER SUA FÉ TODOS OS DIAS
           </span>
         </h1>
-        <p class="hero-sub" style="margin-top:14px;font-size:17px;max-width:500px;">
-          Encontre a oração certa para cada momento da sua vida com <strong style="color:var(--heading);">Orações Diárias</strong> —
-          o guia que aproxima você de Deus <strong style="color:var(--heading);">em minutos</strong>, todos os dias.
+        <p class="hero-sub" style="margin-top:14px;font-size:17px;max-width:480px;">
+          A oração certa para cada momento da sua vida — o guia que aproxima você de Deus
+          <strong style="color:var(--heading);">em minutos</strong>, todos os dias.
         </p>
 
-        <div style="margin-top:16px;display:flex;align-items:center;gap:12px;font-family:'Poppins',sans-serif;font-size:12px;color:var(--ink-mute);font-weight:500;">
-          <span style="display:flex;align-items:center;gap:4px;">
-            <span style="color:var(--gold);font-size:13px;">★</span>
-            <span style="color:var(--heading);font-weight:700;">4,8/5</span>
-            <span>·</span>
-            <span>3.500+ compras</span>
+        <div style="margin-top:18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:'Poppins',sans-serif;font-size:12.5px;color:var(--ink-mute);font-weight:500;">
+          <span style="display:flex;align-items:center;gap:5px;">
+            <span style="color:var(--gold);font-size:14px;letter-spacing:1px;">★★★★★</span>
+            <span style="color:var(--heading);font-weight:700;">4,8</span>
+            <span>(3.536)</span>
           </span>
-          <span style="width:1px;height:16px;background:var(--line-strong);"></span>
-          <span style="display:flex;align-items:center;gap:4px;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-            <span style="color:var(--heading);">98% de aprovação</span>
-          </span>
+          <span style="width:1px;height:14px;background:var(--line-strong);"></span>
+          <span>3.500+ compras</span>
+          <span style="width:1px;height:14px;background:var(--line-strong);"></span>
+          <span style="font-family:'Poppins',sans-serif;font-size:10.5px;font-weight:700;text-transform:uppercase;background:rgba(212,175,55,0.14);color:var(--heading);padding:3px 10px;border-radius:10px;letter-spacing:0.04em;">🔥 Mais Vendido</span>
         </div>
 
         <!-- CARD DESKTOP -->
-        <div class="product-card" style="max-width:440px;margin-top:20px;padding:0;overflow:hidden;border-radius:12px;background:var(--parchment);">
-          <div style="padding:14px 18px 10px;border-bottom:1px solid rgba(240,228,207,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px 8px;">
-            <div style="display:flex;align-items:center;gap:8px;">
-              <span style="color:var(--gold);font-size:13px;letter-spacing:1px;">★★★★★</span>
-              <span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:var(--ink);letter-spacing:-0.01em;">4,8</span>
-              <span style="font-size:12px;color:var(--ink-soft);">(3.536)</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;">
-              <span style="font-family:'Poppins',sans-serif;font-size:7.5px;font-weight:700;text-transform:uppercase;background:#d4af37;color:#3a1420;padding:2px 10px;border-radius:10px;letter-spacing:0.04em;">🔥 Mais Vendido</span>
-              <span style="font-family:'Poppins',sans-serif;font-size:7px;color:var(--ink-soft);background:rgba(240,228,207,0.06);padding:2px 10px;border-radius:10px;font-weight:500;">1º em Devocionais</span>
-            </div>
+        <div class="product-card" style="max-width:420px;margin-top:24px;padding:26px 28px;border-radius:14px;background:var(--parchment);">
+          <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;">
+            <span style="font-family:'Poppins',sans-serif;font-size:16px;color:var(--ink-soft);text-decoration:line-through;font-weight:500;">R$ 47,00</span>
+            <span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:40px;color:var(--ink);"><sup style="font-size:15px;">R$</sup>19,99</span>
+            <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;background:#22a65e;color:#fff;padding:3px 13px;border-radius:10px;letter-spacing:-0.01em;">-57%</span>
           </div>
-          <div style="padding:14px 18px 4px;">
-            <h3 style="font-family:'Poppins',sans-serif;font-size:20px;font-weight:700;color:var(--ink);margin:0;">Orações Diárias</h3>
-            <p style="font-size:13px;color:var(--ink-soft);margin:2px 0 0;">Guia completo com 50 orações poderosas para todos os momentos</p>
+          <div style="margin-top:6px;font-size:12.5px;color:var(--ink-soft);font-family:'Poppins',sans-serif;font-weight:500;">
+            4x de R$ 5,60 · acesso imediato e vitalício
           </div>
-          <div style="padding:10px 18px 6px;">
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
-              <span style="font-family:'Poppins',sans-serif;font-size:8px;font-weight:700;text-transform:uppercase;color:#a8791f;background:rgba(168,121,31,0.12);padding:1px 10px;border-radius:8px;letter-spacing:0.04em;">OFERTA DO DIA</span>
-            </div>
-            <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;">
-              <span style="font-family:'Poppins',sans-serif;font-size:16px;color:var(--ink-soft);text-decoration:line-through;font-weight:500;">R$ 47,00</span>
-              <span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:36px;color:var(--ink);"><sup style="font-size:14px;">R$</sup>19,99</span>
-              <span style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;background:#22a65e;color:#fff;padding:2px 14px;border-radius:10px;letter-spacing:-0.01em;">-57%</span>
-            </div>
-            <div style="margin-top:4px;font-size:11.5px;color:var(--ink-soft);font-family:'Poppins',sans-serif;font-weight:500;">
-              em até <b style="color:var(--ink);">4x de R$ 5,60</b> · menos de <b style="color:#a8791f;">R$ 0,39 por oração</b>
-            </div>
+
+          <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(240,228,207,0.08);display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-soft);font-family:'Poppins',sans-serif;">
+            <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#22a65e;animation:pulse 1.8s ease-in-out infinite;flex-shrink:0;"></span>
+            <span><b style="color:var(--ink);">47 unidades</b> restantes com este preço</span>
           </div>
-          <div style="padding:6px 18px 10px;">
-            <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-soft);margin-bottom:6px;">
-              <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#22a65e;animation:pulse 1.8s ease-in-out infinite;"></span>
-              <span><b style="color:var(--ink);">47 unidades</b> com desconto</span>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px 16px;font-size:12px;color:var(--ink-soft);">
-              <span style="display:flex;align-items:center;gap:5px;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6 6 5 9.5 5 13a7 7 0 0014 0c0-3.5-3-7-7-11z"/></svg>
-                Acesso imediato
-              </span>
-              <span style="display:flex;align-items:center;gap:5px;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 4v16"/></svg>
-                PDF digital
-              </span>
-              <span style="display:flex;align-items:center;gap:5px;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
-                Acesso vitalício
-              </span>
-              <span style="display:flex;align-items:center;gap:5px;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h15M12 3v15M12 21l3-6h-6l3 6z"/></svg>
-                Frete grátis
-              </span>
-              <span style="display:flex;align-items:center;gap:5px;grid-column:1/3;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-                Devolução grátis · 7 dias de garantia
-              </span>
-            </div>
-          </div>
-          <div style="padding:2px 18px 16px;">
-            <a href="https://pay.cakto.com.br/363rhot" target="_blank" rel="noopener" class="product-btn" id="heroBtnDesktop" style="font-size:15px;padding:15px;">
-              Quero minhas orações → R$ 19,99
-            </a>
+
+          <a href="https://pay.cakto.com.br/363rhot" target="_blank" rel="noopener" class="product-btn" id="heroBtnDesktop" style="font-size:16px;padding:17px;margin-top:20px;">
+            Quero minhas orações → R$ 19,99
+          </a>
+          <div style="margin-top:12px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:11.5px;color:var(--ink-mute);font-family:'Poppins',sans-serif;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Garantia de 7 dias · devolução grátis
           </div>
         </div>
       </div>
@@ -1452,23 +1409,14 @@
       </div>
     </div>
 
-    <!-- LADO DIREITO: FICHAS FLUTUANTES -->
+    <!-- LADO DIREITO: FICHAS FLUTUANTES (simplificado) -->
     <div class="specimen-stack">
-      <div class="tag t1" style="background:var(--parchment);padding:20px 18px 18px;">
+      <div class="tag t1">
         <div class="hole"></div>
-        <div class="tag-rating" style="justify-content:center;margin-top:0;margin-bottom:2px;">
-          <span class="stars">★★★★★</span>
-          <span>4,8</span>
-          <span style="opacity:0.3;">·</span>
-          <span>(3.536 avaliações)</span>
-        </div>
         <img loading="lazy" decoding="async" src="assets/img/jesus/jesus_pregando3.jpeg" alt="Jesus pregando" class="tag-photo" style="aspect-ratio:4/3;object-fit:cover;background:var(--parchment);">
-        <div class="tag-num" style="text-align:center;margin-top:4px;">EDIÇÃO DIGITAL</div>
-        <div class="tag-name" style="font-size:16px;text-align:center;">Orações Diárias</div>
-        <div class="tag-price" style="text-align:center;border-top:none;padding-top:2px;">guia completo <b>com 50 orações</b></div>
-        <div style="text-align:center;margin-top:6px;font-family:'Poppins',sans-serif;font-size:8px;color:var(--amethyst-deep);letter-spacing:0.04em;border-top:1px dashed rgba(240,228,207,0.12);padding-top:6px;font-weight:600;">
-          ★ Mais Vendido · 4,8/5
-        </div>
+        <div class="tag-num">EDIÇÃO DIGITAL</div>
+        <div class="tag-name">Orações Diárias</div>
+        <div class="tag-price">guia completo <b>com 50 orações</b></div>
       </div>
       <div class="tag t2">
         <div class="hole"></div>
@@ -1476,13 +1424,6 @@
         <div class="tag-num">ORAÇÃO Nº 002</div>
         <div class="tag-name">Oração de Proteção</div>
         <div class="tag-price">tema <b>proteção diária</b></div>
-      </div>
-      <div class="tag t3">
-        <div class="hole"></div>
-        <img loading="lazy" decoding="async" src="assets/img/jesus/jesus_pregando2.jpeg" alt="Oração de Gratidão" class="tag-photo" style="aspect-ratio:1/1;object-fit:cover;">
-        <div class="tag-num">ORAÇÃO Nº 003</div>
-        <div class="tag-name">Oração de Gratidão</div>
-        <div class="tag-price">tema <b>gratidão</b></div>
       </div>
     </div>
   </div>
