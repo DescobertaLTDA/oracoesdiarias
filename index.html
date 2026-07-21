@@ -351,19 +351,19 @@
   .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(201,162,39,0.4);}
 
   /* HERO */
-  .hero{position:relative;padding:110px 0 100px;overflow:hidden;isolation:isolate;min-height:640px;display:flex;align-items:center;}
+  .hero{position:relative;padding:56px 0 60px;overflow:hidden;isolation:isolate;min-height:0;display:flex;align-items:center;}
   /* FOTO DE JESUS EDGE-TO-EDGE (ESTILO NETFLIX) - fundo de toda a seção */
   .hero-bg{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
-  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:78% 26%;display:block;}
   .hero-bg::after{
     content:'';
     position:absolute;
     inset:0;
     background:
-      linear-gradient(90deg, rgba(12,9,6,0.95) 0%, rgba(12,9,6,0.88) 24%, rgba(12,9,6,0.55) 46%, rgba(12,9,6,0.15) 68%, rgba(12,9,6,0.05) 100%),
-      linear-gradient(180deg, rgba(12,9,6,0.35) 0%, rgba(12,9,6,0.1) 30%, rgba(12,9,6,0.5) 100%);
+      linear-gradient(90deg, rgba(10,7,4,0.97) 0%, rgba(10,7,4,0.94) 30%, rgba(10,7,4,0.72) 52%, rgba(10,7,4,0.28) 72%, rgba(10,7,4,0.08) 100%),
+      linear-gradient(180deg, rgba(10,7,4,0.25) 0%, rgba(10,7,4,0.05) 25%, rgba(10,7,4,0.55) 100%);
   }
-  .hero-grid{display:block;position:relative;z-index:1;}
+  .hero-grid{display:block;position:relative;z-index:1;width:100%;max-width:640px;padding-left:clamp(24px,6vw,96px);padding-right:24px;box-sizing:border-box;}
   .hero h1{font-size:clamp(34px,4.6vw,58px);line-height:1.06;color:var(--ink-light);}
   .hero h1 em{font-style:italic;font-weight:500;background:linear-gradient(100deg,var(--citrino),var(--quartzo) 60%,var(--amethyst));-webkit-background-clip:text;background-clip:text;color:transparent;}
   .hero-sub{margin-top:22px;font-size:18px;color:var(--ink-mute);max-width:480px;}
@@ -518,6 +518,7 @@
     .slide-audio-bar{backdrop-filter:none;background:rgba(34,26,20,0.98);}
     .hero{padding-top:0;min-height:0;display:block;}
     .hero-bg{display:none;}
+    .hero-grid{max-width:none;padding-left:20px;padding-right:20px;}
     .hero-tag-mobile{display:none;}
     .hero-photo-mobile{display:block;position:relative;width:100vw;margin-left:calc(-50vw + 50%);margin-bottom:8px;overflow:hidden;}
     .hero-photo-mobile img{width:100%;height:420px;object-fit:cover;object-position:center 18%;display:block;}
@@ -1150,7 +1151,7 @@
   <div class="hero-bg">
     <img loading="eager" decoding="async" src="assets/img/hero/jesus_orando.jpeg" alt="Jesus em oração">
   </div>
-  <div class="wrap hero-grid">
+  <div class="hero-grid">
     <div>
 
       <!-- MOBILE: foto do padre com overlay suave -->
