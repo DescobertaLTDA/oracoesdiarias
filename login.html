@@ -7,6 +7,13 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>Orações · Login</title>
+
+  <!-- Favicon (mesmo do site principal) -->
+  <link rel="apple-touch-icon" href="icons/ios/icon-180.png" sizes="180x180">
+  <link rel="icon" type="image/png" href="icons/windows/icon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="icons/windows/icon-16.png" sizes="16x16">
+  <link rel="shortcut icon" href="icons/windows/icon-32.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
@@ -43,6 +50,40 @@
       flex-direction: column;
       margin: 0 auto;
       overflow: hidden;
+    }
+
+    /* ===== DESKTOP: foto à esquerda, formulário à direita ===== */
+    @media (min-width: 900px) {
+      .login-full {
+        flex-direction: row;
+      }
+      .hero-top {
+        width: 50%;
+        height: 100%;
+        flex-shrink: 0;
+      }
+      .hero-text {
+        left: 48px;
+        right: 48px;
+        bottom: 56px;
+      }
+      .hero-text .verse {
+        font-size: 22px;
+      }
+      .hero-text .ref {
+        font-size: 13px;
+      }
+      .login-content {
+        width: 50%;
+        justify-content: center;
+        padding: 40px 60px;
+      }
+      .login-content > * {
+        width: 100%;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
 
     .hero-top {
