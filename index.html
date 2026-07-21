@@ -395,17 +395,12 @@
   .hero h1{font-size:clamp(34px,4.6vw,58px);line-height:1.06;color:var(--ink-light);}
   .hero h1 em{font-style:italic;font-weight:500;background:linear-gradient(100deg,var(--citrino),var(--quartzo) 60%,var(--amethyst));-webkit-background-clip:text;background-clip:text;color:transparent;}
   .hero-sub{margin-top:22px;font-size:18px;color:var(--ink-mute);max-width:480px;}
-  .specimen-stack{position:relative;height:480px;align-self:center;}
-  .tag{position:absolute;width:250px;background:var(--parchment);border-radius:4px;padding:20px 18px 18px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.06);}
-  .tag::before{content:'';position:absolute;top:0;left:0;right:0;height:14px;background-image:radial-gradient(circle at 14px 7px, transparent 5px, var(--parchment) 5.5px);background-size:28px 14px;background-repeat:repeat-x;}
-  .tag .hole{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:var(--bg);box-shadow:inset 0 1px 3px rgba(0,0,0,0.5);}
-  .tag-num{font-family:'Poppins',sans-serif;font-size:10.5px;color:var(--ink-soft);letter-spacing:0.06em;margin-top:8px;font-weight:600;}
-  .tag-name{font-family:'Poppins',sans-serif;font-weight:600;font-size:20px;color:var(--ink);margin-top:4px;}
-  .tag-price{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(240,228,207,0.25);font-family:'Poppins',sans-serif;font-size:13px;color:var(--ink-soft);}
-  .tag-price b{color:var(--ink);font-size:15px;}
-  .tag-photo{width:100%;aspect-ratio:4/3;object-fit:contain;background:var(--parchment);border-radius:4px;margin-top:4px;display:block;box-shadow:0 6px 14px rgba(0,0,0,0.2);}
-  .t1{top:0;left:14%;transform:rotate(-6deg);z-index:3;}
-  .t2{top:170px;left:38%;transform:rotate(5deg);z-index:4;}
+  .hero-photo-desktop{position:relative;height:560px;border-radius:20px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,0.5);border:1px solid rgba(212,175,55,0.18);align-self:center;}
+  .hero-photo-desktop img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;}
+  .hero-photo-desktop-overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(20,16,9,0) 40%, rgba(20,16,9,0.55) 78%, rgba(20,16,9,0.88) 100%),linear-gradient(100deg, rgba(20,16,9,0.28) 0%, rgba(20,16,9,0) 35%);pointer-events:none;}
+  .hero-photo-desktop-badge{position:absolute;left:20px;bottom:20px;display:flex;align-items:center;gap:7px;background:rgba(20,16,9,0.55);backdrop-filter:blur(6px);border:1px solid rgba(240,228,207,0.18);padding:9px 16px;border-radius:30px;font-family:'Poppins',sans-serif;font-size:12.5px;color:var(--ink-light);font-weight:500;}
+  .hero-photo-desktop-badge .stars{color:var(--gold);font-size:13px;letter-spacing:1px;}
+  .hero-photo-desktop-badge span:nth-child(2){color:var(--heading);font-weight:700;}
   .tag-rating{display:flex;align-items:center;gap:6px;margin-top:6px;font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--ink-soft);}
   .tag-rating .stars{color:var(--gold);font-size:11px;letter-spacing:1px;}
   .tag-badge{font-family:'Poppins',sans-serif;font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;background:var(--amethyst);color:#fff;padding:2px 10px;border-radius:10px;display:inline-block;}
@@ -584,7 +579,7 @@
     .slide-audio-bar{backdrop-filter:none;background:rgba(34,26,20,0.98);}
     .hero{padding-top:0;}
     .hero-grid{grid-template-columns:1fr;}
-    .specimen-stack{display:none;}
+    .hero-photo-desktop{display:none;}
     .hero-tag-mobile{display:none;}
     .hero-photo-mobile{display:block;position:relative;width:100vw;margin-left:calc(-50vw + 50%);margin-bottom:8px;overflow:hidden;}
     .hero-photo-mobile img{width:100%;height:420px;object-fit:cover;object-position:center 18%;display:block;}
@@ -1403,25 +1398,20 @@
       </div>
     </div>
 
-    <!-- LADO DIREITO: FICHAS FLUTUANTES (simplificado) -->
-    <div class="specimen-stack">
-      <div class="tag t1">
-        <div class="hole"></div>
-        <img loading="lazy" decoding="async" src="assets/img/jesus/jesus_pregando3.jpeg" alt="Jesus pregando" class="tag-photo" style="aspect-ratio:4/3;object-fit:cover;background:var(--parchment);">
-        <div class="tag-num">EDIÇÃO DIGITAL</div>
-        <div class="tag-name">Orações Diárias</div>
-        <div class="tag-price">guia completo <b>com 50 orações</b></div>
-      </div>
-      <div class="tag t2">
-        <div class="hole"></div>
-        <img loading="lazy" decoding="async" src="assets/img/jesus/jesus_pregando1.jpeg" alt="Oração de Proteção" class="tag-photo" style="aspect-ratio:1/1;object-fit:cover;">
-        <div class="tag-num">ORAÇÃO Nº 002</div>
-        <div class="tag-name">Oração de Proteção</div>
-        <div class="tag-price">tema <b>proteção diária</b></div>
+    <!-- LADO DIREITO: FOTO COM OVERLAY (mesma do hero mobile) -->
+    <div class="hero-photo-desktop">
+      <img loading="eager" decoding="async" src="assets/img/hero/padre_hero1.png" alt="Padre em oração no deserto">
+      <div class="hero-photo-desktop-overlay"></div>
+      <div class="hero-photo-desktop-badge">
+        <span class="stars">★★★★★</span>
+        <span>4,8</span>
+        <span style="opacity:0.5;">·</span>
+        <span>3.536 avaliações</span>
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- ============ ORAÇÕES NARRADAS (ÁUDIO) - FORMATO SPOTIFY COM PROGRESS BAR ============ -->
 <section class="audio-section" id="audios">
