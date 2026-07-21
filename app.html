@@ -1812,21 +1812,33 @@
             // CONFIG
             // ============================================================
             const EDGE_FUNCTION_URL = SUPABASE_URL + '/functions/v1/get-audio-url';
-            const GITHUB_IMAGE_BASE = 'https://raw.githubusercontent.com/DescobertaLTDA/oracoesdiarias/main/';
-
+            
             // ============================================================
-            // MAPEAMENTO DE CAPAS
+            // CAMINHOS DOS ASSETS ATUALIZADOS
             // ============================================================
+            // Usando caminhos relativos para funcionar em qualquer ambiente
+            const ASSET_BASE = window.location.origin + '/assets';
+            
             const COVER_MAP = {
-                'Oração da Manhã': 'assets/img/oracoes/oracao_da_manha_capa.jpeg',
-                'Oração de Proteção': 'assets/img/oracoes/oracao_de_protecao_capa.jpeg',
-                'Oração de Gratidão': 'assets/img/oracoes/oracao_de_gratidao_capa.jpeg',
-                'Oração de Cura': 'assets/img/oracoes/oracao_de_cura_capa.jpeg',
-                'Oração pela Família': 'assets/img/oracoes/oracao_pela_familia_capa.jpeg',
-                'Oração da Noite': 'assets/img/oracoes/oracao_da_noite_capa.jpeg',
-                'Oração de Fé': 'assets/img/oracoes/oracao_de_fe_capa.jpeg',
-                'Oração pela Paz': 'assets/img/oracoes/oracao_pela_paz_capa.jpeg',
-                'Oração pela Prosperidade': 'assets/img/oracoes/oracao_pela_prosperidade_capa.jpeg'
+                'Oração da Manhã': ASSET_BASE + '/img/oracoes/oracao_da_manha_capa.jpeg',
+                'Oração de Proteção': ASSET_BASE + '/img/oracoes/oracao_de_protecao_capa.jpeg',
+                'Oração de Gratidão': ASSET_BASE + '/img/oracoes/oracao_de_gratidao_capa.jpeg',
+                'Oração de Cura': ASSET_BASE + '/img/oracoes/oracao_de_cura_capa.jpeg',
+                'Oração pela Família': ASSET_BASE + '/img/oracoes/oracao_pela_familia_capa.jpeg',
+                'Oração da Noite': ASSET_BASE + '/img/oracoes/oracao_da_noite_capa.jpeg',
+                'Oração de Fé': ASSET_BASE + '/img/oracoes/oracao_de_fe_capa.jpeg',
+                'Oração pela Paz': ASSET_BASE + '/img/oracoes/oracao_pela_paz_capa.jpeg',
+                'Oração pela Prosperidade': ASSET_BASE + '/img/oracoes/oracao_pela_prosperidade_capa.jpeg'
+            };
+
+            // Mapeamento das imagens das parábolas
+            const PARABLE_IMAGES = {
+                1: ASSET_BASE + '/img/jesus/jesus_pregando1.jpeg',
+                2: ASSET_BASE + '/img/jesus/jesus_pregando2.jpeg',
+                3: ASSET_BASE + '/img/jesus/jesus_pregando3.jpeg',
+                4: ASSET_BASE + '/img/jesus/jesus_pregando4.jpeg',
+                5: ASSET_BASE + '/img/jesus/jesus_pregando5.jpeg',
+                6: ASSET_BASE + '/img/jesus/jesus_pregando6.jpeg'
             };
 
             const VINIL_COLORS = {
@@ -1847,7 +1859,7 @@
                 'default': '#d4af37'
             };
 
-            function getCoverUrl(t) { const f = COVER_MAP[t]; return f ? GITHUB_IMAGE_BASE + f : null; }
+            function getCoverUrl(t) { return COVER_MAP[t] || null; }
 
             function getVinilColor(c) { return VINIL_COLORS[c] || VINIL_COLORS['default']; }
 
@@ -1858,7 +1870,7 @@
             // ============================================================
             // TRILHA DE FUNDO
             // ============================================================
-            const bgAudio = new Audio(GITHUB_IMAGE_BASE + 'assets/audio/trilha.mp3');
+            const bgAudio = new Audio(ASSET_BASE + '/audio/trilha.mp3');
             bgAudio.loop = true;
             bgAudio.volume = 0.07;
 
@@ -1946,12 +1958,8 @@
             let isPlaying = false;
             let favorites = JSON.parse(localStorage.getItem('oracoes_favorites') || '[]');
 
-            // Token usado para invalidar respostas "atrasadas" de fetchAudio
-            // (ex: usuário clica rápido em outra oração antes da anterior terminar de carregar)
             let audioRequestId = 0;
 
-            // Áudio silencioso de 1 frame, usado apenas para "destravar" a permissão
-            // de autoplay do navegador dentro do gesto de clique do usuário.
             const SILENT_AUDIO_SRC = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=';
             let audioUnlocked = false;
             function unlockAudioPlayback() {
@@ -2033,8 +2041,6 @@
             // OPEN PLAYER
             // ============================================================
             function openPlayer(track, autoplay = true) {
-                // Precisa acontecer de forma síncrona, dentro do clique do usuário,
-                // para o navegador liberar o autoplay do áudio real que vem depois (assíncrono).
                 unlockAudioPlayback();
 
                 if (!track.is_free && !isSubscriber) {
@@ -2125,9 +2131,6 @@
             // FETCH AUDIO
             // ============================================================
             async function fetchAudio(trackId) {
-                // Cada chamada recebe um "ticket" único. Se uma chamada mais nova
-                // começar antes desta terminar (usuário trocou de oração rápido),
-                // esta chamada antiga se torna obsoleta e não deve mais mexer no player.
                 const requestId = ++audioRequestId;
 
                 try {
@@ -2152,8 +2155,6 @@
                     const data = await res.json();
                     if (!data.url) throw new Error('URL não retornada');
 
-                    // Se enquanto esperávamos a resposta o usuário já pediu outra oração,
-                    // descarta este resultado silenciosamente (não é um erro real).
                     if (requestId !== audioRequestId) return;
 
                     startBgMusic();
@@ -2215,11 +2216,7 @@
                     audio = newAudio;
 
                     newAudio.play().catch((err) => {
-                        // Uma requisição mais nova já assumiu o player: ignora silenciosamente.
                         if (requestId !== audioRequestId) return;
-
-                        // Interrupção esperada (ex: usuário pausou/trocou de faixa rapidamente
-                        // enquanto o play() ainda estava sendo processado). Não é um erro real.
                         if (err && err.name === 'AbortError') return;
 
                         console.error('Erro ao tocar áudio:', err);
@@ -2229,9 +2226,6 @@
                         playerSidebar.classList.remove('playing');
 
                         if (err && err.name === 'NotAllowedError') {
-                            // Política de autoplay do navegador bloqueou o play automático.
-                            // Basta o usuário tocar no botão de play novamente para o áudio já
-                            // carregado começar a tocar (não precisa recarregar nada).
                             const playBtn = document.getElementById('playBtn');
                             if (playBtn) playBtn.classList.add('needs-tap');
                         } else {
@@ -2412,7 +2406,7 @@
             closePlayerBtn.addEventListener('click', closePlayer);
 
             function closePlayer() {
-                audioRequestId++; // invalida qualquer fetchAudio ainda em andamento
+                audioRequestId++;
                 stopPreTimer();
                 if (audio) {
                     audio.pause();
@@ -2487,12 +2481,12 @@
             // ============================================================
             function renderParables() {
                 const parables = [
-                    { name: 'O Filho Pródigo', sub: 'Sobre o amor que perdoa e recebe de volta', ref: 'Lucas 15:11-32', teaching: 'Não importa o quanto alguém se afaste, o amor do Pai está sempre pronto para recebê-lo de volta, sem cobranças.', img: 'assets/img/jesus/jesus_pregando1.jpeg' },
-                    { name: 'O Bom Samaritano', sub: 'Sobre cuidar de quem sofre, mesmo sendo estranho', ref: 'Lucas 10:25-37', teaching: 'Amar ao próximo é agir com compaixão prática diante de quem precisa, não importa quem seja.', img: 'assets/img/jesus/jesus_pregando2.jpeg' },
-                    { name: 'A Ovelha Perdida', sub: 'Sobre o cuidado com quem se perde do caminho', ref: 'Lucas 15:3-7', teaching: 'Deus não desiste de ninguém: Ele vai atrás de cada pessoa perdida e celebra quando ela é encontrada.', img: 'assets/img/jesus/jesus_pregando3.jpeg' },
-                    { name: 'Os Talentos', sub: 'Sobre usar bem o que foi confiado a você', ref: 'Mateus 25:14-30', teaching: 'Cada dom recebido deve ser usado com responsabilidade e coragem, nunca escondido por medo.', img: 'assets/img/jesus/jesus_pregando4.jpeg' },
-                    { name: 'O Semeador', sub: 'Sobre como o coração recebe a palavra de Deus', ref: 'Mateus 13:1-23', teaching: 'A mesma semente dá frutos diferentes conforme o solo: prepare seu coração para recebê-la.', img: 'assets/img/jesus/jesus_pregando5.jpeg' },
-                    { name: 'O Grão de Mostarda', sub: 'Sobre como pequenos começos geram grandes resultados', ref: 'Mateus 13:31-32', teaching: 'Uma fé pequena, quando cultivada, pode crescer e se tornar algo grande e cheio de vida.', img: 'assets/img/jesus/jesus_pregando6.jpeg' }
+                    { name: 'O Filho Pródigo', sub: 'Sobre o amor que perdoa e recebe de volta', ref: 'Lucas 15:11-32', teaching: 'Não importa o quanto alguém se afaste, o amor do Pai está sempre pronto para recebê-lo de volta, sem cobranças.', img: PARABLE_IMAGES[1] },
+                    { name: 'O Bom Samaritano', sub: 'Sobre cuidar de quem sofre, mesmo sendo estranho', ref: 'Lucas 10:25-37', teaching: 'Amar ao próximo é agir com compaixão prática diante de quem precisa, não importa quem seja.', img: PARABLE_IMAGES[2] },
+                    { name: 'A Ovelha Perdida', sub: 'Sobre o cuidado com quem se perde do caminho', ref: 'Lucas 15:3-7', teaching: 'Deus não desiste de ninguém: Ele vai atrás de cada pessoa perdida e celebra quando ela é encontrada.', img: PARABLE_IMAGES[3] },
+                    { name: 'Os Talentos', sub: 'Sobre usar bem o que foi confiado a você', ref: 'Mateus 25:14-30', teaching: 'Cada dom recebido deve ser usado com responsabilidade e coragem, nunca escondido por medo.', img: PARABLE_IMAGES[4] },
+                    { name: 'O Semeador', sub: 'Sobre como o coração recebe a palavra de Deus', ref: 'Mateus 13:1-23', teaching: 'A mesma semente dá frutos diferentes conforme o solo: prepare seu coração para recebê-la.', img: PARABLE_IMAGES[5] },
+                    { name: 'O Grão de Mostarda', sub: 'Sobre como pequenos começos geram grandes resultados', ref: 'Mateus 13:31-32', teaching: 'Uma fé pequena, quando cultivada, pode crescer e se tornar algo grande e cheio de vida.', img: PARABLE_IMAGES[6] }
                 ];
                 let html = '';
                 parables.forEach((p, i) => {
@@ -2500,7 +2494,7 @@
                     html += `
                         <div class="parable-card">
                             <div class="parable-num">Nº ${num}</div>
-                            <img class="parable-cover" src="${GITHUB_IMAGE_BASE + p.img}" alt="${p.name}" loading="lazy">
+                            <img class="parable-cover" src="${p.img}" alt="${p.name}" loading="lazy">
                             <div class="parable-title">${p.name}</div>
                             <div class="parable-subtitle">${p.sub}</div>
                             <div class="parable-divider"></div>
