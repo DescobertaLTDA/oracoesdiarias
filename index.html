@@ -390,26 +390,20 @@
   .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(201,162,39,0.4);}
 
   /* HERO */
-  .hero{position:relative;padding:88px 0 100px;background:radial-gradient(ellipse 900px 500px at 82% -10%, rgba(122,36,50,0.16), transparent 60%),radial-gradient(ellipse 700px 400px at 10% 100%, rgba(201,162,39,0.12), transparent 60%);}
-  @media (min-width:981px){
-    .hero{padding-top:0;padding-bottom:0;}
-    .hero-grid{align-items:stretch;}
-    .hero-grid > div:first-child{padding:48px 0 56px;}
-  }
+  .hero{position:relative;padding:70px 0 90px;background:radial-gradient(ellipse 900px 500px at 82% -10%, rgba(122,36,50,0.16), transparent 60%),radial-gradient(ellipse 700px 400px at 10% 100%, rgba(201,162,39,0.12), transparent 60%);}
   .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
   .hero h1{font-size:clamp(34px,4.6vw,58px);line-height:1.06;color:var(--ink-light);}
   .hero h1 em{font-style:italic;font-weight:500;background:linear-gradient(100deg,var(--citrino),var(--quartzo) 60%,var(--amethyst));-webkit-background-clip:text;background-clip:text;color:transparent;}
   .hero-sub{margin-top:22px;font-size:18px;color:var(--ink-mute);max-width:480px;}
-  .hero-photo-desktop{position:relative;height:auto;align-self:stretch;}
-  .hero-photo-desktop img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;}
+  .hero-photo-desktop{position:relative;width:100%;aspect-ratio:16/9;height:auto;align-self:center;border-radius:16px;overflow:hidden;}
+  .hero-photo-desktop img{width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block;}
   .hero-photo-desktop-overlay{position:absolute;inset:0;
     background:
-      radial-gradient(ellipse 72% 68% at 48% 42%, transparent 45%, var(--bg) 100%),
-      linear-gradient(to bottom, transparent 55%, var(--bg) 100%),
-      linear-gradient(to right, var(--bg) 0%, transparent 16%);
+      linear-gradient(to bottom, rgba(20,16,9,0) 55%, rgba(20,16,9,0.55) 100%),
+      linear-gradient(to right, rgba(20,16,9,0.18) 0%, rgba(20,16,9,0) 22%);
     pointer-events:none;
   }
-  .hero-photo-desktop-badge{position:absolute;left:20px;bottom:20px;display:flex;align-items:center;gap:7px;background:rgba(20,16,9,0.55);backdrop-filter:blur(6px);border:1px solid rgba(240,228,207,0.18);padding:9px 16px;border-radius:30px;font-family:'Poppins',sans-serif;font-size:12.5px;color:var(--ink-light);font-weight:500;}
+  .hero-photo-desktop-badge{position:absolute;left:16px;bottom:16px;display:flex;align-items:center;gap:7px;background:rgba(20,16,9,0.55);backdrop-filter:blur(6px);border:1px solid rgba(240,228,207,0.18);padding:8px 14px;border-radius:30px;font-family:'Poppins',sans-serif;font-size:12px;color:var(--ink-light);font-weight:500;}
   .hero-photo-desktop-badge .stars{color:var(--gold);font-size:13px;letter-spacing:1px;}
   .hero-photo-desktop-badge span:nth-child(2){color:var(--heading);font-weight:700;}
   .tag-rating{display:flex;align-items:center;gap:6px;margin-top:6px;font-family:'Poppins',sans-serif;font-size:9.5px;color:var(--ink-soft);}
@@ -1260,17 +1254,13 @@
       <!-- DESKTOP: título -->
       <div class="hero-copy-desktop">
         <div class="eyebrow">Guia digital em PDF · 100% em português</div>
-        <h1 style="font-size:clamp(32px,4.4vw,54px);line-height:1.08;color:var(--heading);">
-          <span style="display:block;font-size:0.65em;font-weight:400;color:var(--citrino);font-family:'Poppins',sans-serif;letter-spacing:0.04em;margin-bottom:4px;font-weight:700;">
-            50 ORAÇÕES PODEROSAS PARA CADA MOMENTO
-          </span>
-          <span style="font-style:italic;font-weight:500;background:linear-gradient(100deg,var(--citrino),var(--quartzo) 60%,var(--amethyst));-webkit-background-clip:text;background-clip:text;color:transparent;font-size:1.15em;">
-            PARA FORTALECER SUA FÉ TODOS OS DIAS
-          </span>
+        <h1 style="font-size:clamp(34px,4.2vw,56px);line-height:1.12;font-weight:700;margin-top:16px;">
+          <span style="color:var(--heading);">Fortaleça sua fé</span><br>
+          <span style="font-style:italic;font-weight:600;background:linear-gradient(100deg,var(--citrino),var(--quartzo) 60%,var(--amethyst));-webkit-background-clip:text;background-clip:text;color:transparent;">todos os dias</span>
         </h1>
-        <p class="hero-sub" style="margin-top:14px;font-size:17px;max-width:480px;">
-          A oração certa para cada momento da sua vida — o guia que aproxima você de Deus
-          <strong style="color:var(--heading);">em minutos</strong>, todos os dias.
+        <p class="hero-sub" style="margin-top:16px;font-size:17px;max-width:480px;">
+          Guia completo com <strong style="color:var(--heading);">50 orações poderosas</strong> para cada momento da sua vida —
+          o caminho mais simples para se aproximar de Deus, <strong style="color:var(--heading);">em minutos</strong>, todos os dias.
         </p>
 
         <div style="margin-top:18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:'Poppins',sans-serif;font-size:12.5px;color:var(--ink-mute);font-weight:500;">
@@ -1289,11 +1279,11 @@
         <div class="product-card" style="max-width:420px;margin-top:24px;padding:26px 28px;border-radius:14px;background:var(--parchment);">
           <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;">
             <span style="font-family:'Poppins',sans-serif;font-size:16px;color:var(--ink-soft);text-decoration:line-through;font-weight:500;">R$ 47,00</span>
-            <span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:40px;color:var(--ink);"><sup style="font-size:15px;">R$</sup>19,99</span>
-            <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;background:#22a65e;color:#fff;padding:3px 13px;border-radius:10px;letter-spacing:-0.01em;">-57%</span>
+            <span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:40px;color:var(--ink);"><sup style="font-size:15px;">R$</sup>7,99</span>
+            <span style="font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:700;background:#22a65e;color:#fff;padding:3px 13px;border-radius:10px;letter-spacing:-0.01em;">-83%</span>
           </div>
           <div style="margin-top:6px;font-size:12.5px;color:var(--ink-soft);font-family:'Poppins',sans-serif;font-weight:500;">
-            4x de R$ 5,60 · acesso imediato e vitalício
+            4x de R$ 2,00 · acesso imediato e vitalício
           </div>
 
           <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(240,228,207,0.08);display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-soft);font-family:'Poppins',sans-serif;">
@@ -1302,7 +1292,7 @@
           </div>
 
           <a href="https://pay.cakto.com.br/363rhot" target="_blank" rel="noopener" class="product-btn" id="heroBtnDesktop" style="font-size:16px;padding:17px;margin-top:20px;">
-            Quero minhas orações → R$ 19,99
+            Quero minhas orações → R$ 7,99
           </a>
           <div style="margin-top:12px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:11.5px;color:var(--ink-mute);font-family:'Poppins',sans-serif;">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
@@ -1367,11 +1357,11 @@
               </span>
               <div class="pc2-price-row">
                 <span class="pc2-price-old">R$ 47,00</span>
-                <span class="pc2-price-new"><sup>R$</sup>19,99</span>
-                <span class="pc2-discount">-57%</span>
+                <span class="pc2-price-new"><sup>R$</sup>7,99</span>
+                <span class="pc2-discount">-83%</span>
               </div>
               <div style="margin-top:4px;font-size:11px;color:var(--ink-mute);font-family:'Poppins',sans-serif;font-weight:500;">
-                4x de R$ 5,60 · menos de <b style="color:#a8791f;">R$ 0,39/oração</b>
+                4x de R$ 2,00 · menos de <b style="color:#a8791f;">R$ 0,16/oração</b>
               </div>
             </div>
           </div>
@@ -1411,7 +1401,7 @@
 
     <!-- LADO DIREITO: FOTO COM OVERLAY (mesma do hero mobile) -->
     <div class="hero-photo-desktop">
-      <img loading="eager" decoding="async" src="assets/img/hero/padre_hero1.png" alt="Padre em oração no deserto">
+      <img loading="eager" decoding="async" src="assets/img/jesus/jesus_orando.jpeg" alt="Jesus em oração">
       <div class="hero-photo-desktop-overlay"></div>
       <div class="hero-photo-desktop-badge">
         <span class="stars">★★★★★</span>
@@ -1659,7 +1649,7 @@
 
     <div style="margin-top:28px;text-align:center;">
       <a href="https://pay.cakto.com.br/363rhot" target="_blank" rel="noopener" class="btn-primary btn-primary-large">Adquirir Orações Diárias →</a>
-      <div style="margin-top:10px;font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--ink-mute);font-weight:500;letter-spacing:-0.01em;">R$ 19,99 · acesso imediato e vitalício</div>
+      <div style="margin-top:10px;font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--ink-mute);font-weight:500;letter-spacing:-0.01em;">R$ 7,99 · acesso imediato e vitalício</div>
     </div>
   </div>
 </section>
@@ -1822,7 +1812,7 @@
 
     <div style="margin-top:32px;text-align:center;">
       <a href="https://pay.cakto.com.br/363rhot" target="_blank" rel="noopener" class="btn-primary btn-primary-large">Adquirir Orações Diárias →</a>
-      <div style="margin-top:12px;font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--ink-mute);font-weight:500;letter-spacing:-0.01em;">R$ 19,99 · acesso imediato e vitalício</div>
+      <div style="margin-top:12px;font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--ink-mute);font-weight:500;letter-spacing:-0.01em;">R$ 7,99 · acesso imediato e vitalício</div>
     </div>
   </div>
 </section>
@@ -2326,7 +2316,7 @@
             <p style="font-size:15px;color:var(--ink-soft);margin-bottom:16px;">+45 orações bloqueadas</p>
             <div style="width:50px;height:2px;background:rgba(240,228,207,0.12);margin:0 auto 18px;"></div>
             <a href="https://pay.cakto.com.br/363rhot" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--ink);color:var(--parchment);font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;border-radius:6px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease;box-shadow:0 8px 24px rgba(0,0,0,0.3);letter-spacing:-0.01em;">
-              Desbloquear tudo — R$19,99
+              Desbloquear tudo — R$7,99
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>
             <span style="font-size:12px;color:var(--ink-soft);font-family:'Poppins',sans-serif;margin-top:12px;font-weight:500;">Acesso imediato após a compra</span>
@@ -2372,7 +2362,7 @@
     </div>
     <div style="margin-top:40px;text-align:center;">
       <a href="https://pay.cakto.com.br/363rhot" target="_blank" rel="noopener" class="btn-primary btn-primary-large">Adquirir Orações Diárias →</a>
-      <div style="margin-top:12px;font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--ink-mute);font-weight:500;letter-spacing:-0.01em;">R$ 19,99 · acesso imediato e vitalício</div>
+      <div style="margin-top:12px;font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--ink-mute);font-weight:500;letter-spacing:-0.01em;">R$ 7,99 · acesso imediato e vitalício</div>
     </div>
   </div>
 </section>
@@ -2420,7 +2410,7 @@
     </div>
     <div style="margin-top:40px;text-align:center;">
       <a href="https://pay.cakto.com.br/363rhot" target="_blank" rel="noopener" class="btn-primary btn-primary-large">Adquirir Orações Diárias →</a>
-      <div style="margin-top:12px;font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--ink-mute);font-weight:500;letter-spacing:-0.01em;">R$ 19,99 · acesso imediato e vitalício</div>
+      <div style="margin-top:12px;font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--ink-mute);font-weight:500;letter-spacing:-0.01em;">R$ 7,99 · acesso imediato e vitalício</div>
     </div>
   </div>
 </section>
@@ -2504,7 +2494,7 @@
     <div class="catalog-note">Baseadas nos ensinamentos de Jesus registrados nos Evangelhos.</div>
     <div style="margin-top:36px;text-align:center;">
       <a href="https://pay.cakto.com.br/363rhot" target="_blank" rel="noopener" class="btn-primary btn-primary-large">Adquirir Orações Diárias →</a>
-      <div style="margin-top:12px;font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--ink-mute);font-weight:500;letter-spacing:-0.01em;">R$ 19,99 · acesso imediato e vitalício</div>
+      <div style="margin-top:12px;font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--ink-mute);font-weight:500;letter-spacing:-0.01em;">R$ 7,99 · acesso imediato e vitalício</div>
     </div>
   </div>
 </section>
@@ -2523,7 +2513,7 @@
     </div>
     <div style="margin-top:40px;text-align:center;">
       <a href="https://pay.cakto.com.br/363rhot" target="_blank" rel="noopener" class="btn-primary btn-primary-large">Adquirir Orações Diárias →</a>
-      <div style="margin-top:12px;font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--ink-mute);font-weight:500;letter-spacing:-0.01em;">R$ 19,99 · acesso imediato e vitalício</div>
+      <div style="margin-top:12px;font-family:'Poppins',sans-serif;font-size:11.5px;color:var(--ink-mute);font-weight:500;letter-spacing:-0.01em;">R$ 7,99 · acesso imediato e vitalício</div>
     </div>
   </div>
 </section>
@@ -2544,15 +2534,15 @@
       </ul>
       <div class="receipt-price">
         <span class="old">R$47,00</span>
-        <span class="new"><sup>R$</sup>19,99</span>
+        <span class="new"><sup>R$</sup>7,99</span>
       </div>
       <div style="text-align:center;font-size:13px;color:var(--ink-soft);font-family:'Poppins',sans-serif;font-weight:500;margin-top:2px;">
-        ou em até <b style="color:var(--ink);">4x de R$ 5,60</b> sem juros
+        ou em até <b style="color:var(--ink);">4x de R$ 2,00</b> sem juros
       </div>
 
       <div style="margin-top:20px;background:rgba(168,121,31,0.08);border:1px dashed rgba(168,121,31,0.35);border-radius:8px;padding:16px 18px;text-align:center;">
         <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:#a8791f;">
-          Menos de R$ 0,39 por oração
+          Menos de R$ 0,16 por oração
         </div>
         <p style="font-size:13px;color:var(--ink-soft);margin:6px 0 0;line-height:1.5;">
           São 50 orações escritas com base em versículos bíblicos — cada uma custando menos que um cafezinho dividido em 50. Um investimento pequeno que pode fazer uma grande diferença na sua vida espiritual, todos os dias.
@@ -2585,7 +2575,7 @@
 <section class="final-cta">
   <div class="wrap">
     <h2>Da próxima vez que precisar de forças, você vai saber exatamente qual oração fazer.</h2>
-    <p>Guia completo, em português, por R$19,99 — em até 4x de R$5,60, menos de R$0,39 por oração.<br>50 orações escritas com base em versículos bíblicos: pouco investimento, grande diferença na sua vida espiritual.</p>
+    <p>Guia completo, em português, por R$7,99 — em até 4x de R$2,00, menos de R$0,16 por oração.<br>50 orações escritas com base em versículos bíblicos: pouco investimento, grande diferença na sua vida espiritual.</p>
     <a href="https://pay.cakto.com.br/363rhot" target="_blank" rel="noopener" class="btn-primary btn-primary-large" id="finalCta">Quero minhas 50 orações agora</a>
   </div>
 </section>
