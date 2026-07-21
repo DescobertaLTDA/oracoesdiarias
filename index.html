@@ -549,6 +549,49 @@
   .pc2-secondary-item:first-child{border-left:none;}
   .pc2-secondary-item svg{width:11px;height:11px;color:var(--citrino);flex-shrink:0;}
 
+  /* BOTÃO BAIXAR APP - POSICIONADO ABAIXO DO BOTÃO AMARELO */
+  .download-app-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(212, 175, 55, 0.12);
+    color: var(--citrino);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin-top: 8px;
+    letter-spacing: -0.01em;
+  }
+  .download-app-btn:hover {
+    background: rgba(212, 175, 55, 0.2);
+    border-color: rgba(212, 175, 55, 0.4);
+    transform: translateY(-1px);
+  }
+  .download-app-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+  .download-app-btn .app-badge-download {
+    background: rgba(212, 175, 55, 0.15);
+    padding: 1px 8px;
+    border-radius: 12px;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--citrino);
+  }
+
   /* MOBILE HERO */
   .hero-tag-mobile{display:none;}
   .hero-copy-mobile{display:none;}
@@ -605,6 +648,15 @@
     .hcm-trust span{display:flex;align-items:center;gap:5px;}
     .hcm-trust svg{width:12px;height:12px;stroke:var(--turmalina);stroke-width:2.5;flex-shrink:0;}
     .product-card{max-width:100%;margin-top:14px;}
+    /* Ajuste para o botão de download no mobile */
+    .download-app-btn {
+      font-size: 12px;
+      padding: 10px 14px;
+    }
+    .download-app-btn svg {
+      width: 16px;
+      height: 16px;
+    }
   }
   @media (max-width:640px){
     .wrap{padding:0 20px;}
@@ -1323,6 +1375,12 @@
             <a href="https://pay.cakto.com.br/363rhot" target="_blank" rel="noopener" class="product-btn" id="heroBtnDesktop" style="font-size:15px;padding:15px;">
               Quero minhas orações → R$ 19,99
             </a>
+            <!-- BOTÃO BAIXAR APP ABAIXO DO BOTÃO AMARELO -->
+            <button class="download-app-btn" id="downloadAppBtnDesktop">
+              <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+              Baixar App de Oração Grátis
+              <span class="app-badge-download">PWA</span>
+            </button>
           </div>
         </div>
       </div>
@@ -1414,6 +1472,12 @@
             <span class="pc2-cta-text">Quero minhas orações</span>
             <span class="pc2-cta-arrow">→</span>
           </a>
+          <!-- BOTÃO BAIXAR APP ABAIXO DO BOTÃO AMARELO NO MOBILE -->
+          <button class="download-app-btn" id="downloadAppBtnMobile" style="margin-top:0;">
+            <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Baixar App de Oração Grátis
+            <span class="app-badge-download">PWA</span>
+          </button>
         </div>
       </div>
     </div>
@@ -2708,6 +2772,42 @@
   window.addEventListener('appinstalled', function() {
     console.log('PWA instalado!');
     if (installBtn) installBtn.classList.remove('show');
+  });
+
+  // ============================================================
+  // BOTÃO BAIXAR APP — ACIONA O INSTALADOR PWA
+  // ============================================================
+  var downloadBtns = document.querySelectorAll('.download-app-btn');
+  downloadBtns.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Verifica se o PWA já está instalado
+      if (window.matchMedia('(display-mode: standalone)').matches) {
+        alert('O app Orações Diárias já está instalado!');
+        return;
+      }
+
+      // Se houver um prompt de instalação pendente, usa ele
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function(result) {
+          console.log('Usuário escolheu:', result.outcome);
+          deferredPrompt = null;
+          installBtn.classList.remove('show');
+        });
+        return;
+      }
+
+      // Fallback: exibe instruções para instalação manual
+      if (navigator.userAgent.toLowerCase().includes('android')) {
+        alert('Para instalar o app, toque no menu do navegador (⋮) e selecione "Instalar aplicativo".');
+      } else if (navigator.userAgent.toLowerCase().includes('iphone') || navigator.userAgent.toLowerCase().includes('ipad')) {
+        alert('Para instalar o app, toque no ícone de compartilhar e selecione "Adicionar à Tela de Início".');
+      } else {
+        alert('Para instalar o app, use o navegador Chrome ou Edge e toque no ícone de instalação na barra de endereço.');
+      }
+    });
   });
 
 })();
