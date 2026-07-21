@@ -1,0 +1,19 @@
+oracoesdiarias/
+├── index.html
+├── app.html
+├── login.html
+├── manifest.json
+├── sw.js
+├── vercel.json
+├── assets/
+│   ├── js/comentarios.js
+│   ├── img/
+│   │   ├── clientes/     (16 fotos de depoimentos)
+│   │   ├── jesus/        (jesus_pregando1-6.jpeg)
+│   │   ├── livro/        (capas do e-book)
+│   │   ├── hero/         (padre_hero1.png)
+│   │   └── oracoes/      (thumbnails e capas das orações)
+│   ├── audio/            (todos os .mp3)
+│   └── video/            (video1.mp4)
+└── icons/
+    ├── android/, ios/, windows/, splash/
