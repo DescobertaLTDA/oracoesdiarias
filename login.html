@@ -1,877 +1,326 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>Orações · Login</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orações Diárias — Entrar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#0a0a12;
+    --bg-panel:#14141f;
+    --bg-field:#1b1b28;
+    --gold-1:#e8c468;
+    --gold-2:#b9873a;
+    --parchment:#ede6d6;
+    --muted:#8b87a0;
+    --line:#2a2a3a;
+    --glow: rgba(232,196,104,0.35);
+  }
 
-  <!-- Favicon (mesmo do site principal) -->
-  <link rel="apple-touch-icon" href="icons/ios/icon-180.png" sizes="180x180">
-  <link rel="icon" type="image/png" href="icons/windows/icon-32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="icons/windows/icon-16.png" sizes="16x16">
-  <link rel="shortcut icon" href="icons/windows/icon-32.png">
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  body{
+    background: var(--bg-deep);
+    font-family:'Inter', sans-serif;
+    color:var(--parchment);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
 
-    html, body {
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-    }
+  .screen{
+    width:100%;
+    max-width:420px;
+    background:var(--bg-panel);
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.03);
+    position:relative;
+  }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #000000;
-      display: flex;
-      align-items: stretch;
-      justify-content: stretch;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    height:280px;
+    background-image:
+      linear-gradient(180deg, rgba(10,10,18,0) 0%, rgba(10,10,18,0) 48%, rgba(10,10,18,0.78) 82%, var(--bg-panel) 100%),
+      url('assets/img/oracoes/oracao_pela_paz_capa.jpeg');
+    background-size:cover;
+    background-position:center 20%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-end;
+    padding:0 32px 22px;
+    text-align:center;
+  }
 
-    .login-full {
-      width: 100%;
-      max-width: 100%;
-      height: 100vh;
-      height: 100dvh;
-      background: #000000;
-      display: flex;
-      flex-direction: column;
-      margin: 0 auto;
-      overflow: hidden;
-    }
+  /* halo glow — signature element, sits behind the cross mark */
+  .halo{
+    position:absolute;
+    top:26px;
+    left:50%;
+    transform:translateX(-50%);
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:radial-gradient(circle, var(--glow) 0%, rgba(232,196,104,0) 70%);
+    animation:breathe 5s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce){ .halo{ animation:none; } }
+  @keyframes breathe{
+    0%,100%{ opacity:0.55; transform:translateX(-50%) scale(1); }
+    50%{ opacity:0.9; transform:translateX(-50%) scale(1.12); }
+  }
 
-    /* ===== DESKTOP: foto à esquerda, formulário à direita ===== */
-    @media (min-width: 900px) {
-      .login-full {
-        flex-direction: row;
-      }
-      .hero-top {
-        width: 50%;
-        height: 100%;
-        flex-shrink: 0;
-      }
-      .hero-text {
-        left: 48px;
-        right: 48px;
-        bottom: 56px;
-      }
-      .hero-text .verse {
-        font-size: 22px;
-      }
-      .hero-text .ref {
-        font-size: 13px;
-      }
-      .login-content {
-        width: 50%;
-        justify-content: center;
-        padding: 40px 60px;
-      }
-      .login-content > * {
-        width: 100%;
-        max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
+  .cross-mark{
+    position:relative;
+    z-index:2;
+    width:34px;
+    height:34px;
+    margin-top:18px;
+    color:var(--gold-1);
+  }
 
-    .hero-top {
-      position: relative;
-      width: 100%;
-      height: 200px;
-      flex-shrink: 0;
-      overflow: hidden;
-      background: #0a0a0a;
-    }
+  .verse{
+    position:relative;
+    z-index:2;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:17px;
+    line-height:1.4;
+    color:var(--parchment);
+    text-shadow:0 2px 12px rgba(0,0,0,0.6);
+    margin:14px 0 4px;
+  }
+  .verse-ref{
+    position:relative;
+    z-index:2;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold-1);
+    font-weight:600;
+  }
 
-    .hero-top img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-      display: block;
-    }
+  /* ---------- BODY ---------- */
+  .body{
+    padding:30px 30px 34px;
+  }
 
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.85) 100%);
-    }
+  .brand{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    margin-bottom:4px;
+  }
+  .brand svg{ width:16px; height:16px; color:var(--gold-1); }
+  .brand span{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    letter-spacing:0.06em;
+    font-size:15px;
+    color:var(--gold-1);
+    text-transform:uppercase;
+  }
 
-    .hero-text {
-      position: absolute;
-      bottom: 16px;
-      left: 20px;
-      right: 20px;
-      color: #ffffff;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.5);
-    }
+  h1{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:28px;
+    text-align:center;
+    margin:6px 0 6px;
+    color:var(--parchment);
+  }
+  .sub{
+    text-align:center;
+    font-size:13.5px;
+    color:var(--muted);
+    margin:0 0 26px;
+  }
 
-    .hero-text .verse {
-      font-size: 14px;
-      font-weight: 500;
-      font-style: italic;
-      line-height: 1.4;
-      letter-spacing: 0.2px;
-      color: #ffffff;
-    }
+  form{ display:flex; flex-direction:column; gap:16px; }
 
-    .hero-text .ref {
-      font-size: 11px;
-      font-weight: 600;
-      opacity: 0.7;
-      margin-top: 2px;
-      letter-spacing: 0.5px;
-      color: #d4af37;
-    }
+  label{
+    font-size:12px;
+    font-weight:500;
+    color:var(--muted);
+    letter-spacing:0.03em;
+    margin-bottom:7px;
+    display:block;
+  }
 
-    .login-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding: 20px 20px 28px;
-      overflow-y: auto;
-      background: #000000;
-      -webkit-overflow-scrolling: touch;
-    }
+  .field{
+    position:relative;
+  }
+  .field svg{
+    position:absolute;
+    left:15px;
+    top:50%;
+    transform:translateY(-50%);
+    width:17px;
+    height:17px;
+    color:var(--muted);
+    transition:color 0.2s ease;
+    pointer-events:none;
+  }
+  .field input{
+    width:100%;
+    background:var(--bg-field);
+    border:1px solid var(--line);
+    border-radius:13px;
+    padding:14px 16px 14px 44px;
+    font-size:14.5px;
+    color:var(--parchment);
+    font-family:'Inter', sans-serif;
+    outline:none;
+    transition:border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .field input::placeholder{ color:#5c5972; }
+  .field input:focus{
+    border-color:var(--gold-2);
+    box-shadow:0 0 0 3px rgba(232,196,104,0.14);
+  }
+  .field input:focus + svg,
+  .field:has(input:focus) svg{ color:var(--gold-1); }
 
-    .login-header {
-      margin-bottom: 20px;
-      flex-shrink: 0;
-    }
+  .forgot{
+    text-align:right;
+    margin-top:-4px;
+  }
+  .forgot a{
+    font-size:12.5px;
+    color:var(--muted);
+    text-decoration:none;
+  }
+  .forgot a:hover{ color:var(--gold-1); }
 
-    .login-header .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 2px;
-    }
+  .btn-primary{
+    margin-top:6px;
+    width:100%;
+    border:none;
+    border-radius:14px;
+    padding:15px 20px;
+    background:linear-gradient(135deg, var(--gold-1), var(--gold-2));
+    color:#241a06;
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    cursor:pointer;
+    box-shadow:0 10px 24px rgba(185,135,58,0.28);
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-primary:hover{ transform:translateY(-1px); box-shadow:0 14px 30px rgba(185,135,58,0.36); }
+  .btn-primary:focus-visible{ outline:2px solid var(--gold-1); outline-offset:3px; }
+  .btn-primary svg{ width:16px; height:16px; }
 
-    .login-header .logo svg {
-      width: 24px;
-      height: 24px;
-      color: #d4af37;
-      filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.15));
-    }
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:26px 0 20px;
+    color:var(--muted);
+    font-size:12px;
+  }
+  .divider::before, .divider::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
 
-    .login-header .logo span {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      background: linear-gradient(135deg, #d4af37, #d98b96);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+  .signup{
+    text-align:center;
+    font-size:13.5px;
+    color:var(--muted);
+  }
+  .signup a{
+    color:var(--gold-1);
+    font-weight:600;
+    text-decoration:none;
+  }
+  .signup a:hover{ text-decoration:underline; }
 
-    .login-header h1 {
-      font-size: 22px;
-      font-weight: 700;
-      color: #ffffff;
-      letter-spacing: -0.4px;
-      margin-top: 2px;
-    }
-
-    .login-header p {
-      font-size: 13px;
-      color: #b3b3b3;
-      margin-top: 1px;
-      font-weight: 400;
-    }
-
-    .form-group {
-      margin-bottom: 14px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 12px;
-      font-weight: 600;
-      color: #b3b3b3;
-      margin-bottom: 4px;
-      letter-spacing: 0.2px;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 14px 16px;
-      border-radius: 12px;
-      border: 1.5px solid rgba(255, 255, 255, 0.08);
-      background: rgba(255, 255, 255, 0.04);
-      font-size: 15px;
-      font-family: 'Inter', sans-serif;
-      color: #ffffff;
-      transition: 0.15s ease;
-      outline: none;
-      font-weight: 500;
-    }
-
-    .form-group input:focus {
-      border-color: #d4af37;
-      background: rgba(255, 255, 255, 0.06);
-      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.08);
-    }
-
-    .form-group input::placeholder {
-      color: #6a6a6a;
-      font-weight: 400;
-    }
-
-    .form-group .input-hint {
-      font-size: 11px;
-      color: #6a6a6a;
-      margin-top: 3px;
-      font-weight: 400;
-    }
-
-    .forgot-row {
-      text-align: right;
-      margin-top: -4px;
-      margin-bottom: 16px;
-    }
-
-    .forgot-row a {
-      font-size: 12px;
-      color: #6a6a6a;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.15s;
-      cursor: pointer;
-      border-bottom: 1px dotted transparent;
-    }
-
-    .forgot-row a:hover {
-      color: #d4af37;
-      border-bottom-color: #d4af37;
-    }
-
-    .btn-primary {
-      width: 100%;
-      padding: 15px;
-      border: none;
-      border-radius: 14px;
-      background: #d4af37;
-      color: #000000;
-      font-size: 15px;
-      font-weight: 700;
-      font-family: 'Inter', sans-serif;
-      cursor: pointer;
-      transition: 0.15s ease;
-      letter-spacing: 0.3px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 2px;
-    }
-
-    .btn-primary:active {
-      transform: scale(0.97);
-    }
-
-    .btn-primary:disabled {
-      opacity: 0.5;
-      transform: none;
-      cursor: not-allowed;
-    }
-
-    .btn-primary .arrow {
-      display: inline-block;
-      transition: transform 0.15s;
-    }
-
-    .btn-primary:not(:disabled):active .arrow {
-      transform: translateX(3px);
-    }
-
-    .error-msg {
-      color: #c9505f;
-      font-size: 12px;
-      font-weight: 500;
-      min-height: 20px;
-      margin-top: 3px;
-    }
-
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 18px 0 14px;
-    }
-
-    .divider::before,
-    .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .divider span {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #6a6a6a;
-      font-weight: 600;
-    }
-
-    .footer-link {
-      text-align: center;
-      font-size: 13px;
-      color: #6a6a6a;
-      margin-top: 16px;
-      font-weight: 500;
-      padding-bottom: 2px;
-    }
-
-    .footer-link a {
-      color: #d4af37;
-      text-decoration: none;
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.15s;
-    }
-
-    .footer-link a:active {
-      opacity: 0.7;
-    }
-
-    #resetBox {
-      display: none;
-      flex: 1;
-      flex-direction: column;
-    }
-
-    #resetBox .login-header {
-      margin-bottom: 16px;
-    }
-
-    .toast {
-      position: fixed;
-      top: 16px;
-      left: 16px;
-      right: 16px;
-      z-index: 999;
-      background: #121212;
-      border-radius: 14px;
-      padding: 14px 18px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      transform: translateY(-120%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .toast.show {
-      transform: translateY(0);
-    }
-
-    .toast .toast-title {
-      font-weight: 700;
-      font-size: 14px;
-      color: #ffffff;
-    }
-
-    .toast .toast-msg {
-      font-size: 13px;
-      color: #b3b3b3;
-      margin-top: 2px;
-    }
-
-    .toast .toast-close {
-      position: absolute;
-      top: 8px;
-      right: 12px;
-      background: none;
-      border: none;
-      color: #6a6a6a;
-      font-size: 16px;
-      cursor: pointer;
-      padding: 4px;
-    }
-
-    .panel {
-      display: none;
-      animation: fadeUp 0.25s ease;
-      flex: 1;
-      flex-direction: column;
-    }
-
-    .panel.active {
-      display: flex;
-    }
-
-    @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(6px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    .hidden { display: none; }
-
-    #authBox {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .login-form-wrap {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Spinner */
-    .spinner {
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      border: 2px solid rgba(0,0,0,0.15);
-      border-top: 2px solid #000000;
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    @media (max-height: 640px) {
-      .hero-top { height: 140px; }
-      .hero-text .verse { font-size: 12px; }
-      .login-content { padding: 14px 16px 16px; }
-      .login-header { margin-bottom: 12px; }
-      .login-header h1 { font-size: 18px; }
-      .login-header p { font-size: 11px; }
-      .form-group { margin-bottom: 10px; }
-      .form-group input { padding: 11px 14px; font-size: 14px; }
-      .btn-primary { padding: 12px; font-size: 14px; }
-      .divider { margin: 12px 0 10px; }
-      .footer-link { margin-top: 12px; font-size: 12px; }
-      .forgot-row { margin-bottom: 10px; }
-    }
-
-    @media (max-height: 560px) {
-      .hero-top { height: 100px; }
-      .hero-text .verse { font-size: 11px; }
-      .hero-text .ref { font-size: 9px; }
-      .login-content { padding: 10px 14px 12px; }
-      .login-header { margin-bottom: 8px; }
-      .login-header .logo svg { width: 20px; height: 20px; }
-      .login-header .logo span { font-size: 16px; }
-      .login-header h1 { font-size: 16px; }
-      .login-header p { font-size: 11px; }
-      .form-group { margin-bottom: 8px; }
-      .form-group label { font-size: 10px; }
-      .form-group input { padding: 9px 12px; font-size: 13px; border-radius: 10px; }
-      .btn-primary { padding: 10px; font-size: 13px; border-radius: 12px; }
-      .divider { margin: 10px 0 8px; }
-      .divider span { font-size: 9px; }
-      .footer-link { margin-top: 10px; font-size: 11px; }
-      .forgot-row { margin-bottom: 8px; }
-      .forgot-row a { font-size: 11px; }
-      .error-msg { font-size: 11px; min-height: 16px; }
-    }
-
-    @media (max-height: 480px) and (orientation: landscape) {
-      .hero-top { height: 80px; }
-      .hero-text { bottom: 8px; left: 16px; right: 16px; }
-      .hero-text .verse { font-size: 10px; }
-      .hero-text .ref { font-size: 8px; }
-      .login-content { padding: 8px 16px 10px; flex-direction: row; flex-wrap: wrap; align-content: flex-start; }
-      .login-header { width: 100%; margin-bottom: 6px; display: flex; align-items: center; gap: 12px; }
-      .login-header .logo { margin-bottom: 0; }
-      .login-header .logo svg { width: 18px; height: 18px; }
-      .login-header .logo span { font-size: 14px; }
-      .login-header h1 { font-size: 14px; margin-top: 0; }
-      .login-header p { display: none; }
-      .login-form-wrap { flex-direction: row; flex-wrap: wrap; gap: 6px; align-items: center; }
-      .form-group { flex: 1; min-width: 120px; margin-bottom: 4px; }
-      .form-group label { font-size: 9px; }
-      .form-group input { padding: 6px 10px; font-size: 12px; border-radius: 8px; }
-      .forgot-row { margin-bottom: 4px; }
-      .forgot-row a { font-size: 10px; }
-      .btn-primary { padding: 8px 16px; font-size: 12px; border-radius: 10px; width: auto; flex: 1; min-width: 80px; }
-      .divider { display: none; }
-      .footer-link { margin-top: 6px; font-size: 10px; }
-      .error-msg { font-size: 10px; min-height: 14px; }
-      #resetBox .login-header { margin-bottom: 6px; }
-    }
-  </style>
+</style>
 </head>
 <body>
 
-  <!-- ===== TOAST ===== -->
-  <div class="toast" id="toast">
-    <button class="toast-close" id="toastClose">✕</button>
-    <div class="toast-title" id="toastTitle">Sucesso</div>
-    <div class="toast-msg" id="toastMessage">Mensagem</div>
+<div class="screen">
+
+  <div class="hero">
+    <div class="halo"></div>
+    <svg class="cross-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+      <line x1="12" y1="2.5" x2="12" y2="21.5"/>
+      <line x1="5.5" y1="8.5" x2="18.5" y2="8.5"/>
+    </svg>
+    <p class="verse">&ldquo;Vinde a mim, todos os que estais cansados&rdquo;</p>
+    <span class="verse-ref">Mateus 11:28</span>
   </div>
 
-  <!-- ===== CONTAINER FULL ===== -->
-  <div class="login-full">
+  <div class="body">
 
-    <!-- ===== BORDA SUPERIOR COM IMAGEM + OVERLAY ===== -->
-    <div class="hero-top">
-      <img src="https://raw.githubusercontent.com/DescobertaLTDA/oracoesdiarias/main/assets/img/jesus/jesus_pregando1.jpeg" alt="Jesus" loading="lazy" onerror="this.src='https://via.placeholder.com/800x400/1a1a1a/d4af37?text=Ora%C3%A7%C3%B5es'"/>
-      <div class="hero-overlay"></div>
-      <div class="hero-text">
-        <div class="verse">"Vinde a mim, todos os que estais cansados"</div>
-        <div class="ref">Mateus 11:28</div>
-      </div>
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+        <line x1="12" y1="3" x2="12" y2="21"/>
+        <line x1="6" y1="8" x2="18" y2="8"/>
+      </svg>
+      <span>Orações Diárias</span>
     </div>
 
-    <!-- ===== CONTEÚDO DO FORMULÁRIO ===== -->
-    <div class="login-content">
+    <h1>Bem-vindo de volta</h1>
+    <p class="sub">Entre para continuar sua jornada de oração</p>
 
-      <!-- ===== AUTH BOX ===== -->
-      <div id="authBox">
-
-        <!-- cabeçalho -->
-        <div class="login-header">
-          <div class="logo">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M10.5 2h3v7.5H21v3h-7.5V22h-3v-9.5H3v-3h7.5V2z"/>
-            </svg>
-            <span>Orações</span>
-          </div>
-          <h1>Entrar</h1>
-          <p>Acesse sua conta para ouvir todas as orações</p>
-        </div>
-
-        <!-- ===== LOGIN PANEL ===== -->
-        <div class="panel active" id="loginPanel">
-          <div class="login-form-wrap">
-            <div class="form-group">
-              <label for="loginEmail">E-mail</label>
-              <input type="email" id="loginEmail" placeholder="seu@email.com" autocomplete="email" />
-            </div>
-            <div class="form-group">
-              <label for="loginPassword">Senha</label>
-              <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password" />
-            </div>
-            <div class="forgot-row">
-              <a id="forgotPassword">Esqueci minha senha</a>
-            </div>
-            <div class="error-msg" id="loginError"></div>
-            <button class="btn-primary" id="loginBtn">
-              Entrar
-              <span class="arrow">→</span>
-            </button>
-
-            <div class="footer-link">
-              Novo por aqui? <a id="switchToRegister">Criar conta</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- ===== REGISTER PANEL ===== -->
-        <div class="panel" id="registerPanel">
-          <div class="login-form-wrap">
-            <div class="login-header" style="margin-bottom:12px;">
-              <h1 style="font-size:20px;">Criar conta</h1>
-              <p style="font-size:12px; color:#b3b3b3;">Preencha os dados para começar</p>
-            </div>
-
-            <div class="form-group">
-              <label for="registerName">Nome</label>
-              <input type="text" id="registerName" placeholder="Seu nome" autocomplete="name" />
-            </div>
-            <div class="form-group">
-              <label for="registerEmail">E-mail</label>
-              <input type="email" id="registerEmail" placeholder="seu@email.com" autocomplete="email" />
-            </div>
-            <div class="form-group">
-              <label for="registerPassword">Senha</label>
-              <input type="password" id="registerPassword" placeholder="mínimo 6 caracteres" autocomplete="new-password" />
-              <div class="input-hint">Mínimo 6 caracteres</div>
-            </div>
-            <div class="form-group">
-              <label for="registerConfirm">Confirmar senha</label>
-              <input type="password" id="registerConfirm" placeholder="••••••••" autocomplete="new-password" />
-            </div>
-            <div class="error-msg" id="registerError"></div>
-            <button class="btn-primary" id="registerBtn">
-              Criar conta
-              <span class="arrow">→</span>
-            </button>
-
-            <div class="footer-link" style="margin-top:14px;">
-              Já tem conta? <a id="switchToLogin">Fazer login</a>
-            </div>
-          </div>
+    <form>
+      <div>
+        <label for="email">E-mail</label>
+        <div class="field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3" y="5" width="18" height="14" rx="2.5"/>
+            <path d="M3.5 6.5 12 13 20.5 6.5"/>
+          </svg>
+          <input id="email" type="email" placeholder="seu@email.com" autocomplete="email">
         </div>
       </div>
 
-      <!-- ===== RESET PASSWORD PANEL ===== -->
-      <div id="resetBox">
-        <div class="login-header" style="margin-bottom:14px;">
-          <div class="logo">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M10.5 2h3v7.5H21v3h-7.5V22h-3v-9.5H3v-3h7.5V2z"/>
-            </svg>
-            <span>Orações</span>
-          </div>
-          <h1 style="font-size:20px;">Recuperar senha</h1>
-          <p style="font-size:12px; color:#b3b3b3;">Enviaremos um link para seu e-mail</p>
-        </div>
-
-        <div class="form-group">
-          <label for="resetEmail">E-mail</label>
-          <input type="email" id="resetEmail" placeholder="seu@email.com" />
-        </div>
-        <div class="error-msg" id="resetError"></div>
-        <button class="btn-primary" id="resetBtn">
-          Enviar link
-          <span class="arrow">→</span>
-        </button>
-
-        <div class="footer-link" style="margin-top:14px;">
-          <a id="backToLogin">← Voltar ao login</a>
+      <div>
+        <label for="senha">Senha</label>
+        <div class="field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="4.5" y="10.5" width="15" height="10" rx="2.3"/>
+            <path d="M8 10.5V7.8a4 4 0 0 1 8 0v2.7"/>
+          </svg>
+          <input id="senha" type="password" placeholder="••••••••" autocomplete="current-password">
         </div>
       </div>
 
-    </div>
-    <!-- fim .login-content -->
+      <div class="forgot"><a href="#">Esqueci minha senha</a></div>
+
+      <button type="submit" class="btn-primary">
+        Entrar
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="13 6 19 12 13 18"/>
+        </svg>
+      </button>
+    </form>
+
+    <div class="divider">ou</div>
+
+    <p class="signup">Novo por aqui? <a href="#">Criar conta</a></p>
 
   </div>
-  <!-- fim .login-full -->
+</div>
 
-  <!-- ============================================================ -->
-  <!-- SCRIPT – Supabase + lógica                                   -->
-  <!-- ============================================================ -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-  </script>
-  <script>
-    (function() {
-      'use strict';
-
-      const SUPABASE_URL = 'https://lwqxzgfqgdxecokurold.supabase.co';
-      const SUPABASE_ANON_KEY = 'sb_publishable_frRct0IVKzQnCtiGEO_X9g_5m7S4f_6';
-      const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-      // DOM
-      const loginPanel = document.getElementById('loginPanel');
-      const registerPanel = document.getElementById('registerPanel');
-      const resetBox = document.getElementById('resetBox');
-      const authBox = document.getElementById('authBox');
-
-      const loginEmail = document.getElementById('loginEmail');
-      const loginPassword = document.getElementById('loginPassword');
-      const loginError = document.getElementById('loginError');
-      const loginBtn = document.getElementById('loginBtn');
-
-      const registerName = document.getElementById('registerName');
-      const registerEmail = document.getElementById('registerEmail');
-      const registerPassword = document.getElementById('registerPassword');
-      const registerConfirm = document.getElementById('registerConfirm');
-      const registerError = document.getElementById('registerError');
-      const registerBtn = document.getElementById('registerBtn');
-
-      const resetEmail = document.getElementById('resetEmail');
-      const resetError = document.getElementById('resetError');
-      const resetBtn = document.getElementById('resetBtn');
-
-      // toast
-      const toast = document.getElementById('toast');
-      const toastTitle = document.getElementById('toastTitle');
-      const toastMessage = document.getElementById('toastMessage');
-      const toastClose = document.getElementById('toastClose');
-      let toastTimer = null;
-
-      function showToast(title, msg, isError = false) {
-        toastTitle.textContent = title;
-        toastMessage.textContent = msg;
-        toast.style.borderColor = isError ? '#c9505f' : 'rgba(212,175,55,0.25)';
-        toast.classList.add('show');
-        if (toastTimer) clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => toast.classList.remove('show'), 3800);
-      }
-
-      toastClose.addEventListener('click', () => {
-        toast.classList.remove('show');
-        if (toastTimer) { clearTimeout(toastTimer);
-          toastTimer = null; }
-      });
-
-      // ===== SWITCH =====
-      function showPanel(panelId) {
-        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-        const target = document.getElementById(panelId);
-        if (target) target.classList.add('active');
-      }
-
-      document.getElementById('switchToRegister').addEventListener('click', () => {
-        authBox.style.display = 'flex';
-        resetBox.style.display = 'none';
-        showPanel('registerPanel');
-      });
-
-      document.getElementById('switchToLogin').addEventListener('click', () => {
-        authBox.style.display = 'flex';
-        resetBox.style.display = 'none';
-        showPanel('loginPanel');
-      });
-
-      document.getElementById('backToLogin').addEventListener('click', () => {
-        resetBox.style.display = 'none';
-        authBox.style.display = 'flex';
-        showPanel('loginPanel');
-      });
-
-      document.getElementById('forgotPassword').addEventListener('click', () => {
-        authBox.style.display = 'none';
-        resetBox.style.display = 'flex';
-        resetError.textContent = '';
-      });
-
-      // ===== REDIRECIONAR DIRETO PARA APP =====
-      function redirectToApp() {
-        window.location.href = 'app.html';
-      }
-
-      // ===== LOGIN =====
-      loginBtn.addEventListener('click', async () => {
-        const email = loginEmail.value.trim();
-        const pass = loginPassword.value;
-        if (!email || !pass) { loginError.textContent = 'Preencha todos os campos.'; return; }
-        loginError.textContent = '';
-        loginBtn.disabled = true;
-        loginBtn.innerHTML = 'Entrando <span class="spinner"></span>';
-
-        try {
-          const { data, error } = await supabase.auth.signInWithPassword({ email, password: pass });
-          if (error) throw error;
-          
-          showToast('Bem-vindo 🎉', `Olá ${data.user?.email?.split('@')[0] || 'usuário'}!`);
-          
-          // Redireciona após 500ms
-          setTimeout(redirectToApp, 500);
-
-        } catch (err) {
-          loginError.textContent = err.message || 'Erro ao entrar.';
-          loginBtn.innerHTML = 'Entrar <span class="arrow">→</span>';
-          loginBtn.disabled = false;
-          showToast('Erro', err.message, true);
-        }
-      });
-
-      loginPassword.addEventListener('keydown', e => { if (e.key === 'Enter') loginBtn.click(); });
-      loginEmail.addEventListener('keydown', e => { if (e.key === 'Enter') loginBtn.click(); });
-
-      // ===== REGISTER =====
-      registerBtn.addEventListener('click', async () => {
-        const name = registerName.value.trim();
-        const email = registerEmail.value.trim();
-        const pass = registerPassword.value;
-        const confirm = registerConfirm.value;
-
-        if (!name || !email || !pass || !confirm) {
-          registerError.textContent = 'Preencha todos os campos.';
-          return;
-        }
-        if (pass.length < 6) {
-          registerError.textContent = 'A senha deve ter pelo menos 6 caracteres.';
-          return;
-        }
-        if (pass !== confirm) {
-          registerError.textContent = 'As senhas não coincidem.';
-          return;
-        }
-
-        registerError.textContent = '';
-        registerBtn.disabled = true;
-        registerBtn.innerHTML = 'Criando <span class="spinner"></span>';
-
-        try {
-          const { data, error } = await supabase.auth.signUp({
-            email,
-            password: pass,
-            options: { 
-              data: { name },
-              // Importante: isso só funciona se a confirmação de email estiver DESABILITADA no Supabase
-            }
-          });
-          
-          if (error) throw error;
-
-          // Se o usuário já existe
-          if (data?.user?.identities?.length === 0) {
-            registerError.textContent = 'Este e-mail já está em uso. Faça login.';
-            registerBtn.innerHTML = 'Criar conta <span class="arrow">→</span>';
-            registerBtn.disabled = false;
-            return;
-          }
-
-          // ✅ CONTA CRIADA COM SUCESSO - REDIRECIONA DIRETO PARA O APP
-          showToast('Conta criada! 🎉', 'Bem-vindo ao Orações Diárias!');
-          
-          // Limpa os campos
-          registerName.value = '';
-          registerEmail.value = '';
-          registerPassword.value = '';
-          registerConfirm.value = '';
-
-          // Redireciona para o app após 1 segundo
-          setTimeout(redirectToApp, 1000);
-
-        } catch (err) {
-          registerError.textContent = err.message || 'Erro ao criar conta.';
-          registerBtn.innerHTML = 'Criar conta <span class="arrow">→</span>';
-          registerBtn.disabled = false;
-          showToast('Erro', err.message, true);
-        }
-      });
-
-      registerConfirm.addEventListener('keydown', e => { if (e.key === 'Enter') registerBtn.click(); });
-
-      // ===== RESET =====
-      resetBtn.addEventListener('click', async () => {
-        const email = resetEmail.value.trim();
-        if (!email) { resetError.textContent = 'Digite seu e-mail.'; return; }
-        resetError.textContent = '';
-        resetBtn.disabled = true;
-        resetBtn.innerHTML = 'Enviando <span class="spinner"></span>';
-
-        try {
-          const { error } = await supabase.auth.resetPasswordForEmail(email, {
-            redirectTo: window.location.origin + '/reset-password.html',
-          });
-          if (error) throw error;
-          showToast('E-mail enviado 📧', 'Verifique sua caixa de entrada.');
-          resetBtn.innerHTML = 'Enviar link <span class="arrow">→</span>';
-          resetBtn.disabled = false;
-          setTimeout(() => document.getElementById('backToLogin').click(), 2000);
-        } catch (err) {
-          resetError.textContent = err.message || 'Erro ao enviar.';
-          resetBtn.innerHTML = 'Enviar link <span class="arrow">→</span>';
-          resetBtn.disabled = false;
-          showToast('Erro', err.message, true);
-        }
-      });
-
-      resetEmail.addEventListener('keydown', e => { if (e.key === 'Enter') resetBtn.click(); });
-
-      // ===== SESSION CHECK =====
-      async function checkSession() {
-        const { data } = await supabase.auth.getSession();
-        if (data?.session) {
-          // Se já estiver logado, vai direto para o app
-          window.location.href = 'app.html';
-        }
-      }
-      checkSession();
-
-    })();
-  </script>
 </body>
 </html>
