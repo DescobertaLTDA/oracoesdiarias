@@ -33,7 +33,6 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* container full — mobile first, sem scroll */
     .login-full {
       width: 100%;
       max-width: 100%;
@@ -108,7 +107,6 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    /* cabeçalho */
     .login-header {
       margin-bottom: 20px;
       flex-shrink: 0;
@@ -151,13 +149,6 @@
       color: #b3b3b3;
       margin-top: 1px;
       font-weight: 400;
-    }
-
-    /* formulário */
-    .login-form-wrap {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
     }
 
     .form-group {
@@ -273,7 +264,6 @@
       margin-top: 3px;
     }
 
-    /* separador */
     .divider {
       display: flex;
       align-items: center;
@@ -297,47 +287,6 @@
       font-weight: 600;
     }
 
-    /* demo box */
-    .demo-box {
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 12px;
-      padding: 10px 14px;
-      text-align: center;
-      font-size: 12px;
-      color: #b3b3b3;
-      cursor: pointer;
-      transition: 0.15s ease;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      font-weight: 500;
-      margin-bottom: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      flex-wrap: wrap;
-    }
-
-    .demo-box:active {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(212, 175, 55, 0.2);
-    }
-
-    .demo-box code {
-      background: rgba(212, 175, 55, 0.08);
-      padding: 2px 8px;
-      border-radius: 6px;
-      color: #d4af37;
-      font-weight: 600;
-      font-family: 'Inter', monospace;
-      font-size: 11px;
-    }
-
-    .demo-box .sep {
-      color: #6a6a6a;
-      font-weight: 300;
-    }
-
-    /* footer */
     .footer-link {
       text-align: center;
       font-size: 13px;
@@ -359,7 +308,6 @@
       opacity: 0.7;
     }
 
-    /* ===== painel de reset ===== */
     #resetBox {
       display: none;
       flex: 1;
@@ -370,7 +318,6 @@
       margin-bottom: 16px;
     }
 
-    /* ===== toast ===== */
     .toast {
       position: fixed;
       top: 16px;
@@ -414,7 +361,6 @@
       padding: 4px;
     }
 
-    /* ===== transição entre painéis ===== */
     .panel {
       display: none;
       animation: fadeUp 0.25s ease;
@@ -445,276 +391,66 @@
       flex-direction: column;
     }
 
-    /* ===== ajustes para telas muito pequenas ===== */
     @media (max-height: 640px) {
-      .hero-top {
-        height: 140px;
-      }
-
-      .hero-text .verse {
-        font-size: 12px;
-      }
-
-      .login-content {
-        padding: 14px 16px 16px;
-      }
-
-      .login-header {
-        margin-bottom: 12px;
-      }
-
-      .login-header h1 {
-        font-size: 18px;
-      }
-
-      .login-header p {
-        font-size: 11px;
-      }
-
-      .form-group {
-        margin-bottom: 10px;
-      }
-
-      .form-group input {
-        padding: 11px 14px;
-        font-size: 14px;
-      }
-
-      .btn-primary {
-        padding: 12px;
-        font-size: 14px;
-      }
-
-      .divider {
-        margin: 12px 0 10px;
-      }
-
-      .footer-link {
-        margin-top: 12px;
-        font-size: 12px;
-      }
-
-      .demo-box {
-        padding: 8px 12px;
-        font-size: 11px;
-      }
-
-      .forgot-row {
-        margin-bottom: 10px;
-      }
+      .hero-top { height: 140px; }
+      .hero-text .verse { font-size: 12px; }
+      .login-content { padding: 14px 16px 16px; }
+      .login-header { margin-bottom: 12px; }
+      .login-header h1 { font-size: 18px; }
+      .login-header p { font-size: 11px; }
+      .form-group { margin-bottom: 10px; }
+      .form-group input { padding: 11px 14px; font-size: 14px; }
+      .btn-primary { padding: 12px; font-size: 14px; }
+      .divider { margin: 12px 0 10px; }
+      .footer-link { margin-top: 12px; font-size: 12px; }
+      .forgot-row { margin-bottom: 10px; }
     }
 
     @media (max-height: 560px) {
-      .hero-top {
-        height: 100px;
-      }
-
-      .hero-text .verse {
-        font-size: 11px;
-      }
-
-      .hero-text .ref {
-        font-size: 9px;
-      }
-
-      .login-content {
-        padding: 10px 14px 12px;
-      }
-
-      .login-header {
-        margin-bottom: 8px;
-      }
-
-      .login-header .logo svg {
-        width: 20px;
-        height: 20px;
-      }
-
-      .login-header .logo span {
-        font-size: 16px;
-      }
-
-      .login-header h1 {
-        font-size: 16px;
-      }
-
-      .login-header p {
-        font-size: 11px;
-      }
-
-      .form-group {
-        margin-bottom: 8px;
-      }
-
-      .form-group label {
-        font-size: 10px;
-      }
-
-      .form-group input {
-        padding: 9px 12px;
-        font-size: 13px;
-        border-radius: 10px;
-      }
-
-      .btn-primary {
-        padding: 10px;
-        font-size: 13px;
-        border-radius: 12px;
-      }
-
-      .divider {
-        margin: 10px 0 8px;
-      }
-
-      .divider span {
-        font-size: 9px;
-      }
-
-      .footer-link {
-        margin-top: 10px;
-        font-size: 11px;
-      }
-
-      .demo-box {
-        padding: 6px 10px;
-        font-size: 10px;
-      }
-
-      .forgot-row {
-        margin-bottom: 8px;
-      }
-
-      .forgot-row a {
-        font-size: 11px;
-      }
-
-      .error-msg {
-        font-size: 11px;
-        min-height: 16px;
-      }
+      .hero-top { height: 100px; }
+      .hero-text .verse { font-size: 11px; }
+      .hero-text .ref { font-size: 9px; }
+      .login-content { padding: 10px 14px 12px; }
+      .login-header { margin-bottom: 8px; }
+      .login-header .logo svg { width: 20px; height: 20px; }
+      .login-header .logo span { font-size: 16px; }
+      .login-header h1 { font-size: 16px; }
+      .login-header p { font-size: 11px; }
+      .form-group { margin-bottom: 8px; }
+      .form-group label { font-size: 10px; }
+      .form-group input { padding: 9px 12px; font-size: 13px; border-radius: 10px; }
+      .btn-primary { padding: 10px; font-size: 13px; border-radius: 12px; }
+      .divider { margin: 10px 0 8px; }
+      .divider span { font-size: 9px; }
+      .footer-link { margin-top: 10px; font-size: 11px; }
+      .forgot-row { margin-bottom: 8px; }
+      .forgot-row a { font-size: 11px; }
+      .error-msg { font-size: 11px; min-height: 16px; }
     }
 
-    /* landscape */
     @media (max-height: 480px) and (orientation: landscape) {
-      .hero-top {
-        height: 80px;
-      }
-
-      .hero-text {
-        bottom: 8px;
-        left: 16px;
-        right: 16px;
-      }
-
-      .hero-text .verse {
-        font-size: 10px;
-      }
-
-      .hero-text .ref {
-        font-size: 8px;
-      }
-
-      .login-content {
-        padding: 8px 16px 10px;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-content: flex-start;
-      }
-
-      .login-header {
-        width: 100%;
-        margin-bottom: 6px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .login-header .logo {
-        margin-bottom: 0;
-      }
-
-      .login-header .logo svg {
-        width: 18px;
-        height: 18px;
-      }
-
-      .login-header .logo span {
-        font-size: 14px;
-      }
-
-      .login-header h1 {
-        font-size: 14px;
-        margin-top: 0;
-      }
-
-      .login-header p {
-        display: none;
-      }
-
-      .login-form-wrap {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 6px;
-        align-items: center;
-      }
-
-      .form-group {
-        flex: 1;
-        min-width: 120px;
-        margin-bottom: 4px;
-      }
-
-      .form-group label {
-        font-size: 9px;
-      }
-
-      .form-group input {
-        padding: 6px 10px;
-        font-size: 12px;
-        border-radius: 8px;
-      }
-
-      .forgot-row {
-        margin-bottom: 4px;
-      }
-
-      .forgot-row a {
-        font-size: 10px;
-      }
-
-      .btn-primary {
-        padding: 8px 16px;
-        font-size: 12px;
-        border-radius: 10px;
-        width: auto;
-        flex: 1;
-        min-width: 80px;
-      }
-
-      .divider {
-        display: none;
-      }
-
-      .demo-box {
-        padding: 4px 10px;
-        font-size: 10px;
-        flex: 1;
-        min-width: 100px;
-      }
-
-      .footer-link {
-        margin-top: 6px;
-        font-size: 10px;
-      }
-
-      .error-msg {
-        font-size: 10px;
-        min-height: 14px;
-      }
-
-      #resetBox .login-header {
-        margin-bottom: 6px;
-      }
+      .hero-top { height: 80px; }
+      .hero-text { bottom: 8px; left: 16px; right: 16px; }
+      .hero-text .verse { font-size: 10px; }
+      .hero-text .ref { font-size: 8px; }
+      .login-content { padding: 8px 16px 10px; flex-direction: row; flex-wrap: wrap; align-content: flex-start; }
+      .login-header { width: 100%; margin-bottom: 6px; display: flex; align-items: center; gap: 12px; }
+      .login-header .logo { margin-bottom: 0; }
+      .login-header .logo svg { width: 18px; height: 18px; }
+      .login-header .logo span { font-size: 14px; }
+      .login-header h1 { font-size: 14px; margin-top: 0; }
+      .login-header p { display: none; }
+      .login-form-wrap { flex-direction: row; flex-wrap: wrap; gap: 6px; align-items: center; }
+      .form-group { flex: 1; min-width: 120px; margin-bottom: 4px; }
+      .form-group label { font-size: 9px; }
+      .form-group input { padding: 6px 10px; font-size: 12px; border-radius: 8px; }
+      .forgot-row { margin-bottom: 4px; }
+      .forgot-row a { font-size: 10px; }
+      .btn-primary { padding: 8px 16px; font-size: 12px; border-radius: 10px; width: auto; flex: 1; min-width: 80px; }
+      .divider { display: none; }
+      .footer-link { margin-top: 6px; font-size: 10px; }
+      .error-msg { font-size: 10px; min-height: 14px; }
+      #resetBox .login-header { margin-bottom: 6px; }
     }
   </style>
 </head>
@@ -732,7 +468,7 @@
 
     <!-- ===== BORDA SUPERIOR COM IMAGEM + OVERLAY ===== -->
     <div class="hero-top">
-      <img src="https://raw.githubusercontent.com/DescobertaLTDA/oracoesdiarias/main/padre_hero1.png" alt="Oração" loading="lazy" />
+      <img src="https://raw.githubusercontent.com/DescobertaLTDA/oracoesdiarias/main/assets/img/jesus/jesus_pregando1.jpeg" alt="Jesus" loading="lazy" onerror="this.src='https://via.placeholder.com/800x400/1a1a1a/d4af37?text=Ora%C3%A7%C3%B5es'"/>
       <div class="hero-overlay"></div>
       <div class="hero-text">
         <div class="verse">"Vinde a mim, todos os que estais cansados"</div>
@@ -777,17 +513,6 @@
               Entrar
               <span class="arrow">→</span>
             </button>
-
-            <div class="divider"><span>ou</span></div>
-
-            <!-- demo -->
-            <div class="demo-box" id="demoHint">
-              <span>Use</span>
-              <code>teste@email.com</code>
-              <span class="sep">·</span>
-              <span>senha</span>
-              <code>123456</code>
-            </div>
 
             <div class="footer-link">
               Novo por aqui? <a id="switchToRegister">Criar conta</a>
@@ -955,12 +680,10 @@
         resetError.textContent = '';
       });
 
-      // ===== DEMO =====
-      document.getElementById('demoHint').addEventListener('click', () => {
-        loginEmail.value = 'teste@email.com';
-        loginPassword.value = '123456';
-        showToast('Campos preenchidos', 'Clique em Entrar para testar');
-      });
+      // ===== REDIRECIONAR DIRETO PARA APP =====
+      function redirectToApp() {
+        window.location.href = 'app.html';
+      }
 
       // ===== LOGIN =====
       loginBtn.addEventListener('click', async () => {
@@ -977,7 +700,7 @@
           showToast('Bem-vindo 🎉', `Olá ${data.user?.email?.split('@')[0] || 'usuário'}!`);
           loginBtn.innerHTML = 'Entrar <span class="arrow">→</span>';
           loginBtn.disabled = false;
-          setTimeout(() => window.location.href = 'app.html', 700);
+          setTimeout(redirectToApp, 600);
         } catch (err) {
           loginError.textContent = err.message || 'Erro ao entrar.';
           loginBtn.innerHTML = 'Entrar <span class="arrow">→</span>';
@@ -1021,6 +744,7 @@
           });
           if (error) throw error;
 
+          // Se o usuário já existe
           if (data?.user?.identities?.length === 0) {
             registerError.textContent = 'Este e-mail já está em uso. Faça login.';
             registerBtn.innerHTML = 'Criar conta <span class="arrow">→</span>';
@@ -1028,18 +752,19 @@
             return;
           }
 
-          showToast('Conta criada! 🎉', 'Verifique seu e-mail para confirmar.');
+          // ✅ CONTA CRIADA COM SUCESSO - REDIRECIONA DIRETO PARA O APP
+          showToast('Conta criada! 🎉', 'Bem-vindo ao Orações Diárias!');
           registerBtn.innerHTML = 'Criar conta <span class="arrow">→</span>';
           registerBtn.disabled = false;
+          
+          // Limpa os campos
           registerName.value = '';
           registerEmail.value = '';
           registerPassword.value = '';
           registerConfirm.value = '';
 
-          setTimeout(() => {
-            showPanel('loginPanel');
-            showToast('E-mail de confirmação enviado', 'Verifique sua caixa de entrada.');
-          }, 1500);
+          // Redireciona para o app após 1 segundo
+          setTimeout(redirectToApp, 1000);
 
         } catch (err) {
           registerError.textContent = err.message || 'Erro ao criar conta.';
@@ -1081,7 +806,10 @@
       // ===== SESSION CHECK =====
       async function checkSession() {
         const { data } = await supabase.auth.getSession();
-        if (data?.session) window.location.href = 'app.html';
+        if (data?.session) {
+          // Se já estiver logado, vai direto para o app
+          window.location.href = 'app.html';
+        }
       }
       checkSession();
 
