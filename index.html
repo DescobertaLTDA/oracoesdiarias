@@ -3,9 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<!-- PWA Meta Tags -->
 <meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Orações Diárias">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Orações Diárias">
+
+<!-- PWA Manifest -->
+<link rel="manifest" href="manifest.json">
+
+<!-- Apple Touch Icons -->
+<link rel="apple-touch-icon" href="icons/ios/icon-180.png" sizes="180x180">
+<link rel="apple-touch-icon" href="icons/ios/icon-152.png" sizes="152x152">
+<link rel="apple-touch-icon" href="icons/ios/icon-167.png" sizes="167x167">
+<link rel="apple-touch-icon" href="icons/ios/icon-120.png" sizes="120x120">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="icons/windows/icon-32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="icons/windows/icon-16.png" sizes="16x16">
+<link rel="shortcut icon" href="icons/windows/icon-32.png">
+
+<!-- Apple Splash Screen -->
+<link rel="apple-touch-startup-image" href="icons/splash/splash-512.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)">
+<link rel="apple-touch-startup-image" href="icons/splash/splash-512.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)">
+
 <title>Orações Diárias — 50 Orações Poderosas para Transformar sua Fé</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%0A  %3Crect width='64' height='64' rx='14' fill='%236b1f2b'/%3E%0A  %3Cpath d='M29 10h6v14h14v6H35v24h-6V30H15v-6h14z' fill='%23c9a227'/%3E%0A%3C/svg%3E%0A">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -45,6 +71,88 @@
   .btn-primary{font-family:'Poppins',sans-serif;font-weight:700;font-size:14.5px;background:var(--citrino);color:#3a1420;padding:16px 30px;border-radius:3px;display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer;box-shadow:0 10px 30px rgba(201,162,39,0.25);transition:transform .15s ease, box-shadow .15s ease;letter-spacing:-0.01em;}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(201,162,39,0.4);}
   .btn-primary-large{font-size:clamp(12.5px, 3.6vw, 17px);padding:clamp(12px,4vw,18px) clamp(14px,6vw,40px);white-space:nowrap;}
+
+  /* BOTÃO INSTALAR APP - DESTAQUE NA SIDEBAR */
+  .install-app-btn {
+    display: none;
+    width: 100%;
+    padding: 12px 18px;
+    background: linear-gradient(135deg, var(--citrino), var(--turmalina));
+    color: #3a1420;
+    border: none;
+    border-radius: var(--radius-md, 10px);
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 20px rgba(201, 162, 39, 0.35);
+    font-family: 'Poppins', sans-serif;
+  }
+  .install-app-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 30px rgba(201, 162, 39, 0.5);
+  }
+  .install-app-btn.show {
+    display: flex;
+  }
+  .install-app-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+  .install-app-btn .app-badge {
+    background: rgba(58, 20, 32, 0.15);
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* BOTÃO APP NO HEADER */
+  .nav-app-btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(9px, 2.2vw, 12px);
+    font-weight: 700;
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--citrino);
+    padding: clamp(6px, 1.5vw, 10px) clamp(8px, 2vw, 16px);
+    border-radius: 6px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    letter-spacing: -0.01em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .nav-app-btn:hover {
+    background: rgba(212, 175, 55, 0.25);
+    border-color: rgba(212, 175, 55, 0.4);
+    transform: translateY(-1px);
+  }
+  .nav-app-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+  .nav-app-btn .app-label {
+    display: none;
+  }
+  @media (min-width: 600px) {
+    .nav-app-btn .app-label {
+      display: inline;
+    }
+  }
 
   /* TRACK ITEM - FORMATO SPOTIFY/MUSIC COM PROGRESS BAR */
   .track-item {
@@ -273,10 +381,11 @@
 
   /* HEADER */
   header{position:sticky;top:0;z-index:50;background:rgba(20,16,9,0.86);backdrop-filter:blur(10px);border-bottom:1px solid rgba(212,175,55,0.16);box-shadow:0 8px 24px rgba(0,0,0,0.35);}
-  nav{display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;gap:clamp(8px,2.5vw,20px);padding:18px clamp(14px,4vw,28px);max-width:1180px;margin:0 auto;}
+  nav{display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;gap:clamp(6px,1.8vw,16px);padding:18px clamp(14px,4vw,28px);max-width:1180px;margin:0 auto;}
   .logo{font-family:'Poppins',sans-serif;font-weight:600;font-style:italic;font-size:clamp(13px,4.2vw,22px);letter-spacing:0.015em;display:flex;align-items:center;gap:clamp(6px,1.8vw,11px);color:var(--heading);min-width:0;flex-shrink:1;}
   .logo .cross{width:16px;height:16px;flex-shrink:0;color:var(--citrino);filter:drop-shadow(0 0 6px rgba(201,162,39,0.45));}
   .logo .logo-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;}
+  .nav-right{display:flex;align-items:center;gap:clamp(6px,1.5vw,12px);flex-shrink:0;}
   .nav-cta{font-family:'Poppins',sans-serif;font-size:clamp(9.5px,2.6vw,13px);font-weight:700;background:var(--citrino);color:#3a1420;padding:clamp(7px,1.8vw,11px) clamp(9px,2.8vw,22px);border-radius:6px;box-shadow:0 6px 18px rgba(201,162,39,0.22);transition:transform .15s ease, box-shadow .15s ease;white-space:nowrap;flex-shrink:0;letter-spacing:-0.01em;}
   .nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(201,162,39,0.4);}
 
@@ -1066,8 +1175,25 @@
 
 <header>
   <nav>
-    <div class="logo"><svg class="cross" viewBox="0 0 24 24" fill="currentColor"><path d="M10.5 2h3v7.5H21v3h-7.5V22h-3v-9.5H3v-3h7.5V2z"/></svg><span class="logo-text">Orações Diárias</span></div>
-    <a href="https://pay.cakto.com.br/363rhot" target="_blank" rel="noopener" class="nav-cta" id="navCta">Quero minhas orações →</a>
+    <div class="logo">
+      <svg class="cross" viewBox="0 0 24 24" fill="currentColor"><path d="M10.5 2h3v7.5H21v3h-7.5V22h-3v-9.5H3v-3h7.5V2z"/></svg>
+      <span class="logo-text">Orações Diárias</span>
+    </div>
+    <div class="nav-right">
+      <!-- BOTÃO APP - SEMPRE VISÍVEL -->
+      <a href="app.html" class="nav-app-btn" id="navAppBtn">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 4v16"/><path d="M16 4v16"/><path d="M4 12h16"/><path d="M4 8h5"/><path d="M4 16h5"/></svg>
+        <span class="app-label">App</span>
+        <span style="background:var(--amethyst);color:#fff;font-size:7px;padding:1px 6px;border-radius:8px;font-weight:800;letter-spacing:0.04em;">BETA</span>
+      </a>
+      <!-- BOTÃO INSTALAR APP (aparece apenas quando PWA pode ser instalado) -->
+      <button class="install-app-btn" id="installBtn">
+        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Baixar App
+        <span class="app-badge">GRÁTIS</span>
+      </button>
+      <a href="https://pay.cakto.com.br/363rhot" target="_blank" rel="noopener" class="nav-cta" id="navCta">Quero minhas orações →</a>
+    </div>
   </nav>
 </header>
 
@@ -1117,7 +1243,7 @@
           </span>
         </h1>
         <p class="hero-sub" style="margin-top:14px;font-size:17px;max-width:500px;">
-          Encontre a oração certa para cada momento da sua vida com <strong style="color:var(--heading);">Orações Diárias</strong> — 
+          Encontre a oração certa para cada momento da sua vida com <strong style="color:var(--heading);">Orações Diárias</strong> —
           o guia que aproxima você de Deus <strong style="color:var(--heading);">em minutos</strong>, todos os dias.
         </p>
 
@@ -1212,7 +1338,7 @@
           </span>
         </div>
         <p class="hcm-sub" style="font-size:15px;max-width:340px;margin:10px auto 0;">
-          Encontre a oração certa para cada momento da sua vida com <b>Orações Diárias</b> — 
+          Encontre a oração certa para cada momento da sua vida com <b>Orações Diárias</b> —
           o guia que aproxima você de Deus <b>em minutos</b>, todos os dias.
         </p>
         <div style="text-align:center;margin-top:12px;font-family:'Poppins',sans-serif;font-size:11px;color:var(--ink-mute);font-weight:500;">
@@ -1856,7 +1982,6 @@
 </section>
 <script>
 (function(){
-  // Clona os cards uma vez dentro da própria track para criar o loop infinito perfeito
   var t = document.getElementById('oracoesMarqueeTrack');
   if (t && !t.dataset.cloned) {
     t.innerHTML += t.innerHTML;
@@ -2534,783 +2659,57 @@
 </footer>
 
 <!-- ============ SCRIPTS ============ -->
-<script>
-// ============================================================
-// SCRIPT PARA CARREGAR COMENTÁRIOS DO GITHUB
-// ============================================================
 
-(function() {
-  'use strict';
-
-  var ARQUIVO_COMENTARIOS = 'assets/js/comentarios.js';
-  var listEl = document.getElementById('commentsList');
-  var countEl = document.getElementById('commentCount');
-  var overlay = document.getElementById('commentsOverlay');
-  var sheet = document.getElementById('commentsSheet');
-  var toggleBtn = document.getElementById('commentsToggleBtn');
-  var badgeEl = document.getElementById('commentBadge');
-
-  function relativeTime(ts) {
-    var diff = Math.max(0, Math.floor((Date.now() - ts) / 1000));
-    if (diff < 60) return diff + 's atrás';
-    if (diff < 3600) return Math.floor(diff/60) + 'min atrás';
-    if (diff < 86400) return Math.floor(diff/3600) + 'h atrás';
-    return Math.floor(diff/86400) + 'd atrás';
-  }
-
-  function initial(name) {
-    return (name || 'V').trim().charAt(0).toUpperCase();
-  }
-
-  var TOTAL_LIKES = 5487;
-
-  function getLikeCounts() {
-    try { return JSON.parse(localStorage.getItem('oracoesDiarias_likeCounts')) || {}; }
-    catch (e) { return {}; }
-  }
-
-  function saveLikeCounts(obj) {
-    try { localStorage.setItem('oracoesDiarias_likeCounts', JSON.stringify(obj)); } catch (e) {}
-  }
-
-  function getLikedIds() {
-    try { return JSON.parse(localStorage.getItem('oracoesDiarias_likedByMe')) || []; }
-    catch (e) { return []; }
-  }
-
-  function saveLikedIds(arr) {
-    try { localStorage.setItem('oracoesDiarias_likedByMe', JSON.stringify(arr)); } catch (e) {}
-  }
-
-  function comentarioId(c) {
-    var base = (c.nome || '') + '|' + (c.texto || '') + '|' + (c.timestamp || '');
-    var hash = 0;
-    for (var i = 0; i < base.length; i++) {
-      hash = ((hash << 5) - hash + base.charCodeAt(i)) | 0;
-    }
-    return 'c' + Math.abs(hash);
-  }
-
-  function distribuirLikes(comentarios, totalLikes) {
-    var counts = {};
-    var total = comentarios.length;
-    if (total === 0) return counts;
-
-    var likesPorComentario = [];
-    var soma = 0;
-    for (var i = 0; i < total; i++) {
-      var peso = Math.max(0.3, 1 - (i / total) * 0.6);
-      likesPorComentario.push(peso);
-      soma += peso;
-    }
-
-    var likesRestantes = totalLikes;
-    for (var j = 0; j < total; j++) {
-      var proporcao = likesPorComentario[j] / soma;
-      var qtd = Math.round(proporcao * totalLikes * (0.7 + Math.random() * 0.6));
-      qtd = Math.max(1, Math.min(30, qtd));
-      if (j === total - 1) {
-        qtd = Math.max(1, likesRestantes);
-      }
-      likesRestantes -= qtd;
-      if (likesRestantes < 0) qtd += likesRestantes;
-      if (qtd < 1) qtd = 1;
-      var id = comentarioId(comentarios[j]);
-      counts[id] = Math.floor(qtd);
-    }
-
-    var totalAtual = 0;
-    for (var key in counts) totalAtual += counts[key];
-    if (totalAtual !== totalLikes) {
-      var diff = totalLikes - totalAtual;
-      var firstId = comentarioId(comentarios[0]);
-      counts[firstId] = Math.max(1, (counts[firstId] || 0) + diff);
-    }
-
-    return counts;
-  }
-
-  function getLikeCount(id, comentarios) {
-    var counts = getLikeCounts();
-    if (Object.keys(counts).length === 0 && comentarios && comentarios.length > 0) {
-      var novasContagens = distribuirLikes(comentarios, TOTAL_LIKES);
-      saveLikeCounts(novasContagens);
-      return novasContagens[id] || 0;
-    }
-    return counts[id] || 0;
-  }
-
-  function toggleLike(id, comentarios) {
-    var counts = getLikeCounts();
-    if (Object.keys(counts).length === 0 && comentarios && comentarios.length > 0) {
-      counts = distribuirLikes(comentarios, TOTAL_LIKES);
-      saveLikeCounts(counts);
-    }
-
-    var likedIds = getLikedIds();
-    var idx = likedIds.indexOf(id);
-    var nowLiked;
-
-    if (idx === -1) {
-      likedIds.push(id);
-      counts[id] = (counts[id] || 0) + 1;
-      nowLiked = true;
-    } else {
-      likedIds.splice(idx, 1);
-      counts[id] = Math.max(0, (counts[id] || 1) - 1);
-      nowLiked = false;
-    }
-
-    saveLikedIds(likedIds);
-    saveLikeCounts(counts);
-    atualizarBadgeLikesTotais();
-    return { liked: nowLiked, count: counts[id] };
-  }
-
-  function atualizarBadgeLikesTotais() {
-    var totalEl = document.getElementById('totalLikesCount');
-    if (!totalEl) return;
-    var counts = getLikeCounts();
-    var total = 0;
-    for (var key in counts) {
-      if (counts.hasOwnProperty(key)) total += counts[key];
-    }
-    if (total === 0) total = TOTAL_LIKES;
-    totalEl.textContent = total.toLocaleString('pt-BR');
-  }
-
-  function formatarComentario(c, index, totalComentarios) {
-    var cor = c.cor || '#9c7a2a';
-    var inicial = c.inicial || initial(c.nome || 'V');
-    var timestamp = c.timestamp || Date.now();
-    var nome = c.nome || 'Visitante';
-    var texto = c.texto || 'Comentário incrível!';
-    var id = comentarioId(c);
-    var likedIds = getLikedIds();
-    var isLiked = likedIds.indexOf(id) !== -1;
-
-    var counts = getLikeCounts();
-    var likeCount = 0;
-    if (Object.keys(counts).length === 0) {
-      var comentarios = window._comentariosAtuais || [];
-      if (comentarios.length > 0) {
-        var novasContagens = distribuirLikes(comentarios, TOTAL_LIKES);
-        saveLikeCounts(novasContagens);
-        likeCount = novasContagens[id] || 0;
-      } else {
-        likeCount = Math.floor(Math.random() * 20) + 3;
-      }
-    } else {
-      likeCount = counts[id] || 0;
-    }
-
-    return '<div class="comment-item" style="display:flex;align-items:flex-start;gap:8px;">' +
-      '<div style="width:26px;height:26px;border-radius:50%;background:' + cor + ';display:flex;align-items:center;justify-content:center;font-family:\'Poppins\',sans-serif;font-weight:600;font-size:11px;color:#fff;flex-shrink:0;">' + inicial + '</div>' +
-      '<div style="min-width:0;flex:1;">' +
-        '<div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;">' +
-          '<span style="font-size:12px;font-weight:600;color:var(--ink);">' + nome + '</span>' +
-          '<span class="comment-time" data-ts="' + timestamp + '" style="font-size:10px;color:var(--ink-mute);font-weight:500;">' + relativeTime(timestamp) + '</span>' +
-        '</div>' +
-        '<p style="font-size:12px;color:var(--ink-soft);margin:2px 0 0;line-height:1.4;">' + texto + '</p>' +
-        '<button type="button" class="comment-like-btn" data-comment-id="' + id + '" aria-pressed="' + (isLiked ? 'true' : 'false') + '" style="margin-top:4px;display:inline-flex;align-items:center;gap:5px;background:none;border:none;cursor:pointer;padding:2px 0;font-family:\'Poppins\',sans-serif;font-size:11px;color:' + (isLiked ? 'var(--citrino)' : 'var(--ink-mute)') + ';font-weight:600;">' +
-          '<svg class="like-icon" width="13" height="13" viewBox="0 0 24 24" fill="' + (isLiked ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>' +
-          '<span class="like-count">' + likeCount + '</span>' +
-        '</button>' +
-      '</div>' +
-    '</div>';
-  }
-
-  function atualizarTempos() {
-    if (!listEl) return;
-    var els = listEl.querySelectorAll('.comment-time[data-ts]');
-    els.forEach(function(el) {
-      var ts = parseInt(el.getAttribute('data-ts'), 10);
-      if (!isNaN(ts)) {
-        el.textContent = relativeTime(ts);
-      }
-    });
-  }
-
-  var heroBadgeEl = document.getElementById('heroCommentsBadge');
-
-  function atualizarBadgeComentarios(total) {
-    if (badgeEl) {
-      badgeEl.textContent = total || 0;
-    }
-    if (heroBadgeEl) {
-      heroBadgeEl.textContent = total || 0;
-    }
-  }
-
-  function carregarDoGithub() {
-    if (!listEl) {
-      console.warn('Elemento #commentsList não encontrado');
-      return;
-    }
-
-    listEl.innerHTML = '<div style="text-align:center;padding:20px;color:var(--ink-mute);font-size:13px;">⏳ Carregando comentários...</div>';
-
-    var url = ARQUIVO_COMENTARIOS + '?_cb=' + Date.now();
-    var scriptEl = document.createElement('script');
-    scriptEl.src = url;
-    var finalizado = false;
-
-    function finalizar() {
-      if (finalizado) return;
-      finalizado = true;
-      scriptEl.remove();
-
-      try {
-        var dados = window._comentariosGerados;
-        var comentarios = dados && Array.isArray(dados.lista) ? dados.lista : null;
-
-        if (!comentarios || !comentarios.length) {
-          throw new Error('window._comentariosGerados.lista não foi encontrado ou está vazio');
-        }
-
-        renderizarComentarios(comentarios);
-        console.log('✅ ' + comentarios.length + ' comentários carregados de comentarios.js!');
-      } catch (error) {
-        console.error('❌ Erro ao carregar comentários:', error);
-        listEl.innerHTML = '<div style="text-align:center;padding:20px;color:var(--amethyst);font-size:13px;">⚠️ Erro ao carregar comentários. Tente novamente mais tarde.</div>';
-        tentarFallbackLocal();
-      }
-    }
-
-    scriptEl.onload = finalizar;
-    scriptEl.onerror = function() {
-      console.error('❌ Erro ao carregar o script de comentários:', url);
-      listEl.innerHTML = '<div style="text-align:center;padding:20px;color:var(--amethyst);font-size:13px;">⚠️ Erro ao carregar comentários. Tente novamente mais tarde.</div>';
-      tentarFallbackLocal();
-    };
-
-    document.head.appendChild(scriptEl);
-  }
-
-  function gerarComentariosFallback(total) {
-    var frases = [
-      'Maravilhoso! Este guia é uma verdadeira ferramenta para quem busca se aproximar de Deus.',
-      'Perfeito! Comprei por curiosidade, mas hoje não consigo mais ficar sem.',
-      'Amei! As orações são simples, diretas e cheias de fé.',
-      'Incrível! Recomendei para toda minha família.',
-      'Excepcional! A oração de cura me ajudou a superar um momento difícil.',
-      'Sensacional! Linguagem acessível e com versículos que fortalecem a fé.',
-      'Lindíssimo! Li o PDF inteiro em uma tarde e já estava rezando.',
-      'Magnífico! Com certeza o melhor investimento que fiz na minha vida espiritual.',
-      'Nota 10! A oração da noite me ajudou a dormir em paz.',
-      'Show! Eu era uma pessoa que orava pouco. Hoje tenho uma rotina de oração diária.'
-    ];
-    var nomes = ['Ana Paula', 'Carlos Eduardo', 'Mariana Silva', 'José Augusto', 'Fernanda Lima',
-      'Rafael Santos', 'Juliana Costa', 'Lucas Oliveira', 'Camila Rodrigues', 'Paulo Henrique'];
-    var cores = ['#9c7a2a', '#7a5a1f', '#7a2432', '#a8791f', '#b8860b'];
-
-    function randomItem(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-
-    var comentarios = [];
-    var now = Date.now();
-    for (var i = 0; i < Math.min(total, 512); i++) {
-      var nome = randomItem(nomes);
-      comentarios.push({
-        nome: nome,
-        texto: randomItem(frases),
-        timestamp: now - (i * 2 * 60 * 60 * 1000) - Math.floor(Math.random() * 60 * 60 * 1000),
-        cor: randomItem(cores),
-        inicial: initial(nome)
-      });
-    }
-    comentarios.sort(function(a, b) { return b.timestamp - a.timestamp; });
-    return comentarios;
-  }
-
-  function renderizarComentarios(comentarios) {
-    if (!listEl) return;
-    window._comentariosAtuais = comentarios;
-
-    comentarios.sort(function(a, b) { return (b.timestamp || 0) - (a.timestamp || 0); });
-
-    var counts = getLikeCounts();
-    if (Object.keys(counts).length === 0) {
-      counts = distribuirLikes(comentarios, TOTAL_LIKES);
-      saveLikeCounts(counts);
-    }
-
-    var html = '';
-    for (var i = 0; i < comentarios.length; i++) {
-      html += formatarComentario(comentarios[i], i, comentarios.length);
-    }
-
-    listEl.innerHTML = html;
-
-    var stored = getStoredComments();
-    var totalComentarios = comentarios.length + stored.length;
-
-    if (countEl) {
-      countEl.textContent = totalComentarios.toString();
-    }
-
-    atualizarBadgeComentarios(totalComentarios);
-    atualizarBadgeLikesTotais();
-    setInterval(atualizarTempos, 30000);
-  }
-
-  function tentarFallbackLocal() {
-    try {
-      var stored = JSON.parse(localStorage.getItem('oracoesDiarias_comentariosCache'));
-      if (stored && stored.length) {
-        renderizarComentarios(stored);
-        console.log('📦 Usando cache local (' + stored.length + ' comentários)');
-        return;
-      }
-    } catch (e) {}
-    var fallback = gerarComentariosFallback(512);
-    renderizarComentarios(fallback);
-    console.log('📝 Usando comentários gerados localmente (' + fallback.length + ' comentários)');
-  }
-
-  function getStoredComments() {
-    try { return JSON.parse(localStorage.getItem('oracoesDiarias_userComments')) || []; }
-    catch (e) { return []; }
-  }
-  function saveStoredComments(arr) {
-    try { localStorage.setItem('oracoesDiarias_userComments', JSON.stringify(arr)); } catch (e) {}
-  }
-
-  document.addEventListener('click', function(e) {
-    var btn = e.target.closest ? e.target.closest('.comment-like-btn') : null;
-    if (!btn || !listEl || !listEl.contains(btn)) return;
-    var id = btn.getAttribute('data-comment-id');
-    if (!id) return;
-
-    var comentarios = window._comentariosAtuais || [];
-    var result = toggleLike(id, comentarios);
-    var countSpan = btn.querySelector('.like-count');
-    var iconEl = btn.querySelector('.like-icon');
-    if (countSpan) countSpan.textContent = result.count;
-    if (iconEl) iconEl.setAttribute('fill', result.liked ? 'currentColor' : 'none');
-    btn.setAttribute('aria-pressed', result.liked ? 'true' : 'false');
-    btn.style.color = result.liked ? 'var(--citrino)' : 'var(--ink-mute)';
-  });
-
-  function init() {
-    if (!listEl) {
-      console.warn('Elemento #commentsList não encontrado');
-      return;
-    }
-
-    atualizarBadgeLikesTotais();
-    carregarDoGithub();
-
-    if (overlay && sheet) {
-      var backdrop = document.getElementById('commentsBackdrop');
-      var closeBtn = document.getElementById('commentsCloseBtn');
-      var handle = document.getElementById('commentsHandle');
-      var scrollLockY = 0;
-
-      function lockScroll() {
-        scrollLockY = window.scrollY || window.pageYOffset;
-        document.body.style.position = 'fixed';
-        document.body.style.top = '-' + scrollLockY + 'px';
-        document.body.style.left = '0';
-        document.body.style.right = '0';
-      }
-      function unlockScroll() {
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.left = '';
-        document.body.style.right = '';
-        window.scrollTo(0, scrollLockY);
-      }
-
-      function openSheet() {
-        overlay.classList.add('show');
-        lockScroll();
-        document.addEventListener('keydown', onEscKey);
-      }
-      function closeSheet() {
-        overlay.classList.remove('show');
-        sheet.style.transform = '';
-        unlockScroll();
-        document.removeEventListener('keydown', onEscKey);
-      }
-      function onEscKey(e) {
-        if (e.key === 'Escape') closeSheet();
-      }
-
-      if (toggleBtn) {
-        toggleBtn.addEventListener('click', function() {
-          if (overlay.classList.contains('show')) { closeSheet(); } else { openSheet(); }
-        });
-      }
-      if (closeBtn) closeBtn.addEventListener('click', closeSheet);
-      if (backdrop) backdrop.addEventListener('click', closeSheet);
-
-      var heroCommentsBtn = document.getElementById('heroCommentsBtn');
-      if (heroCommentsBtn) {
-        heroCommentsBtn.addEventListener('click', function(e) {
-          e.stopPropagation();
-          openSheet();
-        });
-      }
-
-      window.OracoesComments = { open: openSheet, close: closeSheet };
-
-      var dragStartY = null;
-      var dragging = false;
-      function onDragStart(y) {
-        dragStartY = y;
-        dragging = true;
-        sheet.style.transition = 'none';
-      }
-      function onDragMove(y) {
-        if (!dragging || dragStartY === null) return;
-        var delta = y - dragStartY;
-        if (delta < 0) delta = 0;
-        sheet.style.transform = 'translateY(' + delta + 'px)';
-      }
-      function onDragEnd(y) {
-        if (!dragging) return;
-        dragging = false;
-        sheet.style.transition = '';
-        var delta = Math.max(0, y - dragStartY);
-        if (delta > 120) {
-          closeSheet();
-        } else {
-          sheet.style.transform = '';
-        }
-        dragStartY = null;
-      }
-      [handle, document.querySelector('.ig-sheet-header')].forEach(function(dragEl) {
-        if (!dragEl) return;
-        dragEl.addEventListener('touchstart', function(e) { onDragStart(e.touches[0].clientY); }, { passive: true });
-        dragEl.addEventListener('touchmove', function(e) { onDragMove(e.touches[0].clientY); }, { passive: true });
-        dragEl.addEventListener('touchend', function(e) { onDragEnd(e.changedTouches[0].clientY); });
-        dragEl.addEventListener('mousedown', function(e) {
-          onDragStart(e.clientY);
-          function moveHandler(ev) { onDragMove(ev.clientY); }
-          function upHandler(ev) {
-            onDragEnd(ev.clientY);
-            document.removeEventListener('mousemove', moveHandler);
-            document.removeEventListener('mouseup', upHandler);
-          }
-          document.addEventListener('mousemove', moveHandler);
-          document.addEventListener('mouseup', upHandler);
-        });
-      });
-
-      var emojiRow = document.getElementById('commentsEmojiRow');
-      var commentInputEl = document.getElementById('commentInput');
-      if (emojiRow && commentInputEl) {
-        emojiRow.querySelectorAll('button').forEach(function(emojiBtn) {
-          emojiBtn.addEventListener('click', function() {
-            commentInputEl.value += emojiBtn.textContent;
-            commentInputEl.focus();
-            commentInputEl.dispatchEvent(new Event('input'));
-          });
-        });
-      }
-    }
-
-    var input = document.getElementById('commentInput');
-    var submitBtn = document.getElementById('commentSubmitBtn');
-
-    if (input && submitBtn) {
-      input.addEventListener('input', function() {
-        submitBtn.classList.toggle('active', input.value.trim().length > 0);
-      });
-      submitBtn.addEventListener('click', function() {
-        var text = (input.value || '').trim();
-        if (!text) { input.focus(); return; }
-        var ts = Date.now();
-        var name = 'Você';
-        var arr = getStoredComments();
-        arr.push({ name: name, text: text, ts: ts });
-        saveStoredComments(arr);
-
-        var comentario = { nome: name, texto: text, timestamp: ts, cor: '#d4af37', inicial: 'V' };
-        var el = document.createElement('div');
-        el.innerHTML = formatarComentario(comentario);
-        listEl.insertBefore(el.firstElementChild, listEl.firstChild);
-
-        var stored = getStoredComments();
-        var currentComentarios = window._comentariosAtuais || [];
-        var total = currentComentarios.length + stored.length;
-
-        if (countEl) {
-          countEl.textContent = total.toString();
-        }
-        atualizarBadgeComentarios(total);
-
-        input.value = '';
-        submitBtn.classList.remove('active');
-      });
-    }
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-
-})();
-</script>
-
-<!-- ============ PLAYER DA LISTA DE ORAÇÕES COM BARRA DE PROGRESSO ============ -->
+<!-- ============ PWA - SERVICE WORKER E INSTALAÇÃO ============ -->
 <script>
 (function() {
   'use strict';
 
-  var items = document.querySelectorAll('[data-audio-item]');
-  var currentPlaying = null;
-
-  // ---- Música de fundo: sobe suavemente quando a oração termina, ----
-  // ---- toca sozinha por alguns segundos e então desliga o player. ----
-  var bgMusic = document.getElementById('bgMusic');
-  var BG_LOW = 0.15;
-  var BG_HIGH = 1.0;
-  var FADE_UP_MS = 2500;
-  var HOLD_MS = 10000;
-  var FADE_DOWN_MS = 1500;
-  var bgFadeTimer = null;
-  var outroHoldTimer = null;
-
-  function fadeBgMusicTo(target, duration, onDone) {
-    if (!bgMusic) { if (onDone) onDone(); return; }
-    if (bgFadeTimer) { clearInterval(bgFadeTimer); bgFadeTimer = null; }
-    var start = bgMusic.volume;
-    var startTime = Date.now();
-    bgFadeTimer = setInterval(function() {
-      var t = Math.min(1, (Date.now() - startTime) / duration);
-      bgMusic.volume = start + (target - start) * t;
-      if (t >= 1) {
-        clearInterval(bgFadeTimer);
-        bgFadeTimer = null;
-        if (onDone) onDone();
-      }
-    }, 100);
-  }
-
-  function cancelOutro() {
-    if (outroHoldTimer) { clearTimeout(outroHoldTimer); outroHoldTimer = null; }
-    if (bgFadeTimer) { clearInterval(bgFadeTimer); bgFadeTimer = null; }
-  }
-
-  function stopBgMusicHard() {
-    cancelOutro();
-    if (bgMusic) {
-      bgMusic.pause();
-      bgMusic.volume = BG_LOW;
-    }
-  }
-
-  function formatTrackTime(sec) {
-    if (!isFinite(sec) || isNaN(sec) || sec < 0) return '0:00';
-    var m = Math.floor(sec / 60);
-    var s = Math.floor(sec % 60);
-    return m + ':' + (s < 10 ? '0' : '') + s;
-  }
-
-  items.forEach(function(item) {
-    var btn = item.querySelector('[data-play-btn]');
-    var audio = item.querySelector('[data-audio-item-src]');
-    var track = item.querySelector('[data-progress-track]');
-    var fill = item.querySelector('.track-progress-fill');
-    var thumb = item.querySelector('.track-progress-thumb');
-    var currentEl = item.querySelector('.track-time-current');
-    var durationEl = item.querySelector('.track-time-duration');
-    if (!btn || !audio) return;
-
-    function setProgress(pct) {
-      pct = Math.max(0, Math.min(100, pct));
-      if (fill) fill.style.width = pct + '%';
-      if (thumb) thumb.style.left = pct + '%';
-    }
-
-    function resetProgress() {
-      setProgress(0);
-      if (currentEl) currentEl.textContent = '0:00';
-    }
-
-    function finalizePlayer() {
-      resetProgress();
-      item.classList.remove('playing');
-      item.classList.remove('outro');
-      if (currentPlaying === item) currentPlaying = null;
-    }
-
-    audio.addEventListener('loadedmetadata', function() {
-      if (durationEl) durationEl.textContent = formatTrackTime(audio.duration);
+  // ============================================================
+  // PWA — SERVICE WORKER E INSTALAÇÃO
+  // ============================================================
+  
+  // Registra o Service Worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js')
+        .then(function(registration) {
+          console.log('Service Worker registrado com sucesso:', registration);
+        })
+        .catch(function(error) {
+          console.log('Falha ao registrar Service Worker:', error);
+        });
     });
+  }
 
-    // Atualiza barra de progresso, thumb e tempos
-    audio.addEventListener('timeupdate', function() {
-      if (audio.duration) {
-        var pct = (audio.currentTime / audio.duration) * 100;
-        setProgress(pct);
-      }
-      if (currentEl) currentEl.textContent = formatTrackTime(audio.currentTime);
-    });
+  // Botão de instalação
+  var deferredPrompt;
+  var installBtn = document.getElementById('installBtn');
 
-    // A oração terminou: a música de fundo sobe suavemente até 100%,
-    // toca sozinha por ~10s e só então o player finaliza.
-    audio.addEventListener('ended', function() {
-      item.classList.add('outro');
-      if (!bgMusic) {
-        finalizePlayer();
-        return;
-      }
-      fadeBgMusicTo(BG_HIGH, FADE_UP_MS, function() {
-        outroHoldTimer = setTimeout(function() {
-          fadeBgMusicTo(BG_LOW, FADE_DOWN_MS, function() {
-            if (bgMusic) bgMusic.pause();
+  window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (installBtn) {
+      installBtn.classList.add('show');
+      installBtn.addEventListener('click', function() {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then(function(result) {
+            console.log('Usuário escolheu:', result.outcome);
+            deferredPrompt = null;
+            installBtn.classList.remove('show');
           });
-          finalizePlayer();
-        }, HOLD_MS);
-      });
-    });
-
-    // Clique ou arraste na barra para buscar posição
-    if (track) {
-      var isDragging = false;
-
-      function seekFromEvent(e) {
-        if (!audio.duration) return;
-        var rect = track.getBoundingClientRect();
-        var clientX = (e.touches ? e.touches[0].clientX : e.clientX);
-        var pct = (clientX - rect.left) / rect.width;
-        pct = Math.max(0, Math.min(1, pct));
-        audio.currentTime = pct * audio.duration;
-        setProgress(pct * 100);
-        if (currentEl) currentEl.textContent = formatTrackTime(audio.currentTime);
-      }
-
-      track.addEventListener('click', function(e) {
-        e.stopPropagation();
-        seekFromEvent(e);
-      });
-
-      track.addEventListener('mousedown', function(e) {
-        e.stopPropagation();
-        isDragging = true;
-        seekFromEvent(e);
-      });
-      document.addEventListener('mousemove', function(e) {
-        if (isDragging) seekFromEvent(e);
-      });
-      document.addEventListener('mouseup', function() {
-        isDragging = false;
-      });
-
-      track.addEventListener('touchstart', function(e) {
-        e.stopPropagation();
-        isDragging = true;
-        seekFromEvent(e);
-      }, {passive:true});
-      track.addEventListener('touchmove', function(e) {
-        if (isDragging) seekFromEvent(e);
-      }, {passive:true});
-      track.addEventListener('touchend', function() {
-        isDragging = false;
+        }
       });
     }
-
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-
-      // Clicou enquanto o player estava no "outro" (música tocando sozinha no final):
-      // encerra tudo na hora.
-      if (item.classList.contains('outro')) {
-        stopBgMusicHard();
-        finalizePlayer();
-        return;
-      }
-
-      if (currentPlaying === item) {
-        audio.dataset.manualPause = '1';
-        audio.pause();
-        item.classList.remove('playing');
-        currentPlaying = null;
-        return;
-      }
-
-      if (currentPlaying) {
-        var prevAudio = currentPlaying.querySelector('[data-audio-item-src]');
-        if (prevAudio) {
-          prevAudio.dataset.manualPause = '1';
-          prevAudio.pause();
-        }
-        var prevFill = currentPlaying.querySelector('.track-progress-fill');
-        var prevThumb = currentPlaying.querySelector('.track-progress-thumb');
-        var prevCurrent = currentPlaying.querySelector('.track-time-current');
-        if (prevFill) prevFill.style.width = '0%';
-        if (prevThumb) prevThumb.style.left = '0%';
-        if (prevCurrent) prevCurrent.textContent = '0:00';
-        currentPlaying.classList.remove('playing');
-        currentPlaying.classList.remove('outro');
-      }
-
-      cancelOutro();
-      if (bgMusic) {
-        bgMusic.currentTime = 0;
-        bgMusic.volume = BG_LOW;
-        bgMusic.play().catch(function() {});
-      }
-
-      audio.currentTime = 0;
-      audio.play().catch(function() {});
-      item.classList.add('playing');
-      currentPlaying = item;
-    });
-
-    audio.addEventListener('pause', function() {
-      // Só reage aqui se foi uma pausa manual (usuário clicou em pausar/trocar de faixa).
-      // No fim natural da oração, o evento 'pause' dispara antes do 'ended' — nesse caso
-      // deixamos o listener de 'ended' cuidar da música de fundo subindo e do outro.
-      if (audio.dataset.manualPause === '1') {
-        audio.dataset.manualPause = '';
-        item.classList.remove('playing');
-        item.classList.remove('outro');
-        // Importante: só mexe na música de fundo compartilhada se ESTE item ainda for
-        // o que está ativo agora. Se o usuário já abriu outra oração enquanto esse
-        // evento de pausa (assíncrono) ainda estava a caminho, quem manda na música
-        // de fundo agora é o item novo — não podemos derrubá-la por baixo dele.
-        if (currentPlaying === item) {
-          stopBgMusicHard();
-          currentPlaying = null;
-        }
-      }
-    });
-
-    audio.addEventListener('play', function() {
-      items.forEach(function(other) {
-        if (other !== item) {
-          other.classList.remove('playing');
-          other.classList.remove('outro');
-          var otherAudio = other.querySelector('[data-audio-item-src]');
-          var otherFill = other.querySelector('.track-progress-fill');
-          var otherThumb = other.querySelector('.track-progress-thumb');
-          var otherCurrent = other.querySelector('.track-time-current');
-          if (otherAudio && !otherAudio.paused) {
-            otherAudio.dataset.manualPause = '1';
-            otherAudio.pause();
-          }
-          if (otherFill) otherFill.style.width = '0%';
-          if (otherThumb) otherThumb.style.left = '0%';
-          if (otherCurrent) otherCurrent.textContent = '0:00';
-        }
-      });
-      currentPlaying = item;
-    });
   });
 
-  // LIKE BUTTONS
-  document.querySelectorAll('.like-btn').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      btn.classList.toggle('liked');
-      btn.textContent = btn.classList.contains('liked') ? '❤' : '♡';
-    });
+  // Detecta quando o PWA foi instalado
+  window.addEventListener('appinstalled', function() {
+    console.log('PWA instalado!');
+    if (installBtn) installBtn.classList.remove('show');
   });
+
 })();
 </script>
 
@@ -4293,6 +3692,771 @@
 
     window._oracoesUtm = { dados: utmData, hasUtm: hasUtm, registrarVenda: registrarVenda };
   })();
+</script>
+
+<!-- ============ SCRIPT COMENTÁRIOS ============ -->
+<script>
+// ============================================================
+// SCRIPT PARA CARREGAR COMENTÁRIOS DO GITHUB
+// ============================================================
+
+(function() {
+  'use strict';
+
+  var ARQUIVO_COMENTARIOS = 'assets/js/comentarios.js';
+  var listEl = document.getElementById('commentsList');
+  var countEl = document.getElementById('commentCount');
+  var overlay = document.getElementById('commentsOverlay');
+  var sheet = document.getElementById('commentsSheet');
+  var toggleBtn = document.getElementById('commentsToggleBtn');
+  var badgeEl = document.getElementById('commentBadge');
+
+  function relativeTime(ts) {
+    var diff = Math.max(0, Math.floor((Date.now() - ts) / 1000));
+    if (diff < 60) return diff + 's atrás';
+    if (diff < 3600) return Math.floor(diff/60) + 'min atrás';
+    if (diff < 86400) return Math.floor(diff/3600) + 'h atrás';
+    return Math.floor(diff/86400) + 'd atrás';
+  }
+
+  function initial(name) {
+    return (name || 'V').trim().charAt(0).toUpperCase();
+  }
+
+  var TOTAL_LIKES = 5487;
+
+  function getLikeCounts() {
+    try { return JSON.parse(localStorage.getItem('oracoesDiarias_likeCounts')) || {}; }
+    catch (e) { return {}; }
+  }
+
+  function saveLikeCounts(obj) {
+    try { localStorage.setItem('oracoesDiarias_likeCounts', JSON.stringify(obj)); } catch (e) {}
+  }
+
+  function getLikedIds() {
+    try { return JSON.parse(localStorage.getItem('oracoesDiarias_likedByMe')) || []; }
+    catch (e) { return []; }
+  }
+
+  function saveLikedIds(arr) {
+    try { localStorage.setItem('oracoesDiarias_likedByMe', JSON.stringify(arr)); } catch (e) {}
+  }
+
+  function comentarioId(c) {
+    var base = (c.nome || '') + '|' + (c.texto || '') + '|' + (c.timestamp || '');
+    var hash = 0;
+    for (var i = 0; i < base.length; i++) {
+      hash = ((hash << 5) - hash + base.charCodeAt(i)) | 0;
+    }
+    return 'c' + Math.abs(hash);
+  }
+
+  function distribuirLikes(comentarios, totalLikes) {
+    var counts = {};
+    var total = comentarios.length;
+    if (total === 0) return counts;
+
+    var likesPorComentario = [];
+    var soma = 0;
+    for (var i = 0; i < total; i++) {
+      var peso = Math.max(0.3, 1 - (i / total) * 0.6);
+      likesPorComentario.push(peso);
+      soma += peso;
+    }
+
+    var likesRestantes = totalLikes;
+    for (var j = 0; j < total; j++) {
+      var proporcao = likesPorComentario[j] / soma;
+      var qtd = Math.round(proporcao * totalLikes * (0.7 + Math.random() * 0.6));
+      qtd = Math.max(1, Math.min(30, qtd));
+      if (j === total - 1) {
+        qtd = Math.max(1, likesRestantes);
+      }
+      likesRestantes -= qtd;
+      if (likesRestantes < 0) qtd += likesRestantes;
+      if (qtd < 1) qtd = 1;
+      var id = comentarioId(comentarios[j]);
+      counts[id] = Math.floor(qtd);
+    }
+
+    var totalAtual = 0;
+    for (var key in counts) totalAtual += counts[key];
+    if (totalAtual !== totalLikes) {
+      var diff = totalLikes - totalAtual;
+      var firstId = comentarioId(comentarios[0]);
+      counts[firstId] = Math.max(1, (counts[firstId] || 0) + diff);
+    }
+
+    return counts;
+  }
+
+  function getLikeCount(id, comentarios) {
+    var counts = getLikeCounts();
+    if (Object.keys(counts).length === 0 && comentarios && comentarios.length > 0) {
+      var novasContagens = distribuirLikes(comentarios, TOTAL_LIKES);
+      saveLikeCounts(novasContagens);
+      return novasContagens[id] || 0;
+    }
+    return counts[id] || 0;
+  }
+
+  function toggleLike(id, comentarios) {
+    var counts = getLikeCounts();
+    if (Object.keys(counts).length === 0 && comentarios && comentarios.length > 0) {
+      counts = distribuirLikes(comentarios, TOTAL_LIKES);
+      saveLikeCounts(counts);
+    }
+
+    var likedIds = getLikedIds();
+    var idx = likedIds.indexOf(id);
+    var nowLiked;
+
+    if (idx === -1) {
+      likedIds.push(id);
+      counts[id] = (counts[id] || 0) + 1;
+      nowLiked = true;
+    } else {
+      likedIds.splice(idx, 1);
+      counts[id] = Math.max(0, (counts[id] || 1) - 1);
+      nowLiked = false;
+    }
+
+    saveLikedIds(likedIds);
+    saveLikeCounts(counts);
+    atualizarBadgeLikesTotais();
+    return { liked: nowLiked, count: counts[id] };
+  }
+
+  function atualizarBadgeLikesTotais() {
+    var totalEl = document.getElementById('totalLikesCount');
+    if (!totalEl) return;
+    var counts = getLikeCounts();
+    var total = 0;
+    for (var key in counts) {
+      if (counts.hasOwnProperty(key)) total += counts[key];
+    }
+    if (total === 0) total = TOTAL_LIKES;
+    totalEl.textContent = total.toLocaleString('pt-BR');
+  }
+
+  function formatarComentario(c, index, totalComentarios) {
+    var cor = c.cor || '#9c7a2a';
+    var inicial = c.inicial || initial(c.nome || 'V');
+    var timestamp = c.timestamp || Date.now();
+    var nome = c.nome || 'Visitante';
+    var texto = c.texto || 'Comentário incrível!';
+    var id = comentarioId(c);
+    var likedIds = getLikedIds();
+    var isLiked = likedIds.indexOf(id) !== -1;
+
+    var counts = getLikeCounts();
+    var likeCount = 0;
+    if (Object.keys(counts).length === 0) {
+      var comentarios = window._comentariosAtuais || [];
+      if (comentarios.length > 0) {
+        var novasContagens = distribuirLikes(comentarios, TOTAL_LIKES);
+        saveLikeCounts(novasContagens);
+        likeCount = novasContagens[id] || 0;
+      } else {
+        likeCount = Math.floor(Math.random() * 20) + 3;
+      }
+    } else {
+      likeCount = counts[id] || 0;
+    }
+
+    return '<div class="comment-item" style="display:flex;align-items:flex-start;gap:8px;">' +
+      '<div style="width:26px;height:26px;border-radius:50%;background:' + cor + ';display:flex;align-items:center;justify-content:center;font-family:\'Poppins\',sans-serif;font-weight:600;font-size:11px;color:#fff;flex-shrink:0;">' + inicial + '</div>' +
+      '<div style="min-width:0;flex:1;">' +
+        '<div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;">' +
+          '<span style="font-size:12px;font-weight:600;color:var(--ink);">' + nome + '</span>' +
+          '<span class="comment-time" data-ts="' + timestamp + '" style="font-size:10px;color:var(--ink-mute);font-weight:500;">' + relativeTime(timestamp) + '</span>' +
+        '</div>' +
+        '<p style="font-size:12px;color:var(--ink-soft);margin:2px 0 0;line-height:1.4;">' + texto + '</p>' +
+        '<button type="button" class="comment-like-btn" data-comment-id="' + id + '" aria-pressed="' + (isLiked ? 'true' : 'false') + '" style="margin-top:4px;display:inline-flex;align-items:center;gap:5px;background:none;border:none;cursor:pointer;padding:2px 0;font-family:\'Poppins\',sans-serif;font-size:11px;color:' + (isLiked ? 'var(--citrino)' : 'var(--ink-mute)') + ';font-weight:600;">' +
+          '<svg class="like-icon" width="13" height="13" viewBox="0 0 24 24" fill="' + (isLiked ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>' +
+          '<span class="like-count">' + likeCount + '</span>' +
+        '</button>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function atualizarTempos() {
+    if (!listEl) return;
+    var els = listEl.querySelectorAll('.comment-time[data-ts]');
+    els.forEach(function(el) {
+      var ts = parseInt(el.getAttribute('data-ts'), 10);
+      if (!isNaN(ts)) {
+        el.textContent = relativeTime(ts);
+      }
+    });
+  }
+
+  var heroBadgeEl = document.getElementById('heroCommentsBadge');
+
+  function atualizarBadgeComentarios(total) {
+    if (badgeEl) {
+      badgeEl.textContent = total || 0;
+    }
+    if (heroBadgeEl) {
+      heroBadgeEl.textContent = total || 0;
+    }
+  }
+
+  function carregarDoGithub() {
+    if (!listEl) {
+      console.warn('Elemento #commentsList não encontrado');
+      return;
+    }
+
+    listEl.innerHTML = '<div style="text-align:center;padding:20px;color:var(--ink-mute);font-size:13px;">⏳ Carregando comentários...</div>';
+
+    var url = ARQUIVO_COMENTARIOS + '?_cb=' + Date.now();
+    var scriptEl = document.createElement('script');
+    scriptEl.src = url;
+    var finalizado = false;
+
+    function finalizar() {
+      if (finalizado) return;
+      finalizado = true;
+      scriptEl.remove();
+
+      try {
+        var dados = window._comentariosGerados;
+        var comentarios = dados && Array.isArray(dados.lista) ? dados.lista : null;
+
+        if (!comentarios || !comentarios.length) {
+          throw new Error('window._comentariosGerados.lista não foi encontrado ou está vazio');
+        }
+
+        renderizarComentarios(comentarios);
+        console.log('✅ ' + comentarios.length + ' comentários carregados de comentarios.js!');
+      } catch (error) {
+        console.error('❌ Erro ao carregar comentários:', error);
+        listEl.innerHTML = '<div style="text-align:center;padding:20px;color:var(--amethyst);font-size:13px;">⚠️ Erro ao carregar comentários. Tente novamente mais tarde.</div>';
+        tentarFallbackLocal();
+      }
+    }
+
+    scriptEl.onload = finalizar;
+    scriptEl.onerror = function() {
+      console.error('❌ Erro ao carregar o script de comentários:', url);
+      listEl.innerHTML = '<div style="text-align:center;padding:20px;color:var(--amethyst);font-size:13px;">⚠️ Erro ao carregar comentários. Tente novamente mais tarde.</div>';
+      tentarFallbackLocal();
+    };
+
+    document.head.appendChild(scriptEl);
+  }
+
+  function gerarComentariosFallback(total) {
+    var frases = [
+      'Maravilhoso! Este guia é uma verdadeira ferramenta para quem busca se aproximar de Deus.',
+      'Perfeito! Comprei por curiosidade, mas hoje não consigo mais ficar sem.',
+      'Amei! As orações são simples, diretas e cheias de fé.',
+      'Incrível! Recomendei para toda minha família.',
+      'Excepcional! A oração de cura me ajudou a superar um momento difícil.',
+      'Sensacional! Linguagem acessível e com versículos que fortalecem a fé.',
+      'Lindíssimo! Li o PDF inteiro em uma tarde e já estava rezando.',
+      'Magnífico! Com certeza o melhor investimento que fiz na minha vida espiritual.',
+      'Nota 10! A oração da noite me ajudou a dormir em paz.',
+      'Show! Eu era uma pessoa que orava pouco. Hoje tenho uma rotina de oração diária.'
+    ];
+    var nomes = ['Ana Paula', 'Carlos Eduardo', 'Mariana Silva', 'José Augusto', 'Fernanda Lima',
+      'Rafael Santos', 'Juliana Costa', 'Lucas Oliveira', 'Camila Rodrigues', 'Paulo Henrique'];
+    var cores = ['#9c7a2a', '#7a5a1f', '#7a2432', '#a8791f', '#b8860b'];
+
+    function randomItem(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+    var comentarios = [];
+    var now = Date.now();
+    for (var i = 0; i < Math.min(total, 512); i++) {
+      var nome = randomItem(nomes);
+      comentarios.push({
+        nome: nome,
+        texto: randomItem(frases),
+        timestamp: now - (i * 2 * 60 * 60 * 1000) - Math.floor(Math.random() * 60 * 60 * 1000),
+        cor: randomItem(cores),
+        inicial: initial(nome)
+      });
+    }
+    comentarios.sort(function(a, b) { return b.timestamp - a.timestamp; });
+    return comentarios;
+  }
+
+  function renderizarComentarios(comentarios) {
+    if (!listEl) return;
+    window._comentariosAtuais = comentarios;
+
+    comentarios.sort(function(a, b) { return (b.timestamp || 0) - (a.timestamp || 0); });
+
+    var counts = getLikeCounts();
+    if (Object.keys(counts).length === 0) {
+      counts = distribuirLikes(comentarios, TOTAL_LIKES);
+      saveLikeCounts(counts);
+    }
+
+    var html = '';
+    for (var i = 0; i < comentarios.length; i++) {
+      html += formatarComentario(comentarios[i], i, comentarios.length);
+    }
+
+    listEl.innerHTML = html;
+
+    var stored = getStoredComments();
+    var totalComentarios = comentarios.length + stored.length;
+
+    if (countEl) {
+      countEl.textContent = totalComentarios.toString();
+    }
+
+    atualizarBadgeComentarios(totalComentarios);
+    atualizarBadgeLikesTotais();
+    setInterval(atualizarTempos, 30000);
+  }
+
+  function tentarFallbackLocal() {
+    try {
+      var stored = JSON.parse(localStorage.getItem('oracoesDiarias_comentariosCache'));
+      if (stored && stored.length) {
+        renderizarComentarios(stored);
+        console.log('📦 Usando cache local (' + stored.length + ' comentários)');
+        return;
+      }
+    } catch (e) {}
+    var fallback = gerarComentariosFallback(512);
+    renderizarComentarios(fallback);
+    console.log('📝 Usando comentários gerados localmente (' + fallback.length + ' comentários)');
+  }
+
+  function getStoredComments() {
+    try { return JSON.parse(localStorage.getItem('oracoesDiarias_userComments')) || []; }
+    catch (e) { return []; }
+  }
+  function saveStoredComments(arr) {
+    try { localStorage.setItem('oracoesDiarias_userComments', JSON.stringify(arr)); } catch (e) {}
+  }
+
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest ? e.target.closest('.comment-like-btn') : null;
+    if (!btn || !listEl || !listEl.contains(btn)) return;
+    var id = btn.getAttribute('data-comment-id');
+    if (!id) return;
+
+    var comentarios = window._comentariosAtuais || [];
+    var result = toggleLike(id, comentarios);
+    var countSpan = btn.querySelector('.like-count');
+    var iconEl = btn.querySelector('.like-icon');
+    if (countSpan) countSpan.textContent = result.count;
+    if (iconEl) iconEl.setAttribute('fill', result.liked ? 'currentColor' : 'none');
+    btn.setAttribute('aria-pressed', result.liked ? 'true' : 'false');
+    btn.style.color = result.liked ? 'var(--citrino)' : 'var(--ink-mute)';
+  });
+
+  function init() {
+    if (!listEl) {
+      console.warn('Elemento #commentsList não encontrado');
+      return;
+    }
+
+    atualizarBadgeLikesTotais();
+    carregarDoGithub();
+
+    if (overlay && sheet) {
+      var backdrop = document.getElementById('commentsBackdrop');
+      var closeBtn = document.getElementById('commentsCloseBtn');
+      var handle = document.getElementById('commentsHandle');
+      var scrollLockY = 0;
+
+      function lockScroll() {
+        scrollLockY = window.scrollY || window.pageYOffset;
+        document.body.style.position = 'fixed';
+        document.body.style.top = '-' + scrollLockY + 'px';
+        document.body.style.left = '0';
+        document.body.style.right = '0';
+      }
+      function unlockScroll() {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        window.scrollTo(0, scrollLockY);
+      }
+
+      function openSheet() {
+        overlay.classList.add('show');
+        lockScroll();
+        document.addEventListener('keydown', onEscKey);
+      }
+      function closeSheet() {
+        overlay.classList.remove('show');
+        sheet.style.transform = '';
+        unlockScroll();
+        document.removeEventListener('keydown', onEscKey);
+      }
+      function onEscKey(e) {
+        if (e.key === 'Escape') closeSheet();
+      }
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+          if (overlay.classList.contains('show')) { closeSheet(); } else { openSheet(); }
+        });
+      }
+      if (closeBtn) closeBtn.addEventListener('click', closeSheet);
+      if (backdrop) backdrop.addEventListener('click', closeSheet);
+
+      var heroCommentsBtn = document.getElementById('heroCommentsBtn');
+      if (heroCommentsBtn) {
+        heroCommentsBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          openSheet();
+        });
+      }
+
+      window.OracoesComments = { open: openSheet, close: closeSheet };
+
+      var dragStartY = null;
+      var dragging = false;
+      function onDragStart(y) {
+        dragStartY = y;
+        dragging = true;
+        sheet.style.transition = 'none';
+      }
+      function onDragMove(y) {
+        if (!dragging || dragStartY === null) return;
+        var delta = y - dragStartY;
+        if (delta < 0) delta = 0;
+        sheet.style.transform = 'translateY(' + delta + 'px)';
+      }
+      function onDragEnd(y) {
+        if (!dragging) return;
+        dragging = false;
+        sheet.style.transition = '';
+        var delta = Math.max(0, y - dragStartY);
+        if (delta > 120) {
+          closeSheet();
+        } else {
+          sheet.style.transform = '';
+        }
+        dragStartY = null;
+      }
+      [handle, document.querySelector('.ig-sheet-header')].forEach(function(dragEl) {
+        if (!dragEl) return;
+        dragEl.addEventListener('touchstart', function(e) { onDragStart(e.touches[0].clientY); }, { passive: true });
+        dragEl.addEventListener('touchmove', function(e) { onDragMove(e.touches[0].clientY); }, { passive: true });
+        dragEl.addEventListener('touchend', function(e) { onDragEnd(e.changedTouches[0].clientY); });
+        dragEl.addEventListener('mousedown', function(e) {
+          onDragStart(e.clientY);
+          function moveHandler(ev) { onDragMove(ev.clientY); }
+          function upHandler(ev) {
+            onDragEnd(ev.clientY);
+            document.removeEventListener('mousemove', moveHandler);
+            document.removeEventListener('mouseup', upHandler);
+          }
+          document.addEventListener('mousemove', moveHandler);
+          document.addEventListener('mouseup', upHandler);
+        });
+      });
+
+      var emojiRow = document.getElementById('commentsEmojiRow');
+      var commentInputEl = document.getElementById('commentInput');
+      if (emojiRow && commentInputEl) {
+        emojiRow.querySelectorAll('button').forEach(function(emojiBtn) {
+          emojiBtn.addEventListener('click', function() {
+            commentInputEl.value += emojiBtn.textContent;
+            commentInputEl.focus();
+            commentInputEl.dispatchEvent(new Event('input'));
+          });
+        });
+      }
+    }
+
+    var input = document.getElementById('commentInput');
+    var submitBtn = document.getElementById('commentSubmitBtn');
+
+    if (input && submitBtn) {
+      input.addEventListener('input', function() {
+        submitBtn.classList.toggle('active', input.value.trim().length > 0);
+      });
+      submitBtn.addEventListener('click', function() {
+        var text = (input.value || '').trim();
+        if (!text) { input.focus(); return; }
+        var ts = Date.now();
+        var name = 'Você';
+        var arr = getStoredComments();
+        arr.push({ name: name, text: text, ts: ts });
+        saveStoredComments(arr);
+
+        var comentario = { nome: name, texto: text, timestamp: ts, cor: '#d4af37', inicial: 'V' };
+        var el = document.createElement('div');
+        el.innerHTML = formatarComentario(comentario);
+        listEl.insertBefore(el.firstElementChild, listEl.firstChild);
+
+        var stored = getStoredComments();
+        var currentComentarios = window._comentariosAtuais || [];
+        var total = currentComentarios.length + stored.length;
+
+        if (countEl) {
+          countEl.textContent = total.toString();
+        }
+        atualizarBadgeComentarios(total);
+
+        input.value = '';
+        submitBtn.classList.remove('active');
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})();
+</script>
+
+<!-- ============ PLAYER DA LISTA DE ORAÇÕES COM BARRA DE PROGRESSO ============ -->
+<script>
+(function() {
+  'use strict';
+
+  var items = document.querySelectorAll('[data-audio-item]');
+  var currentPlaying = null;
+
+  var bgMusic = document.getElementById('bgMusic');
+  var BG_LOW = 0.15;
+  var BG_HIGH = 1.0;
+  var FADE_UP_MS = 2500;
+  var HOLD_MS = 10000;
+  var FADE_DOWN_MS = 1500;
+  var bgFadeTimer = null;
+  var outroHoldTimer = null;
+
+  function fadeBgMusicTo(target, duration, onDone) {
+    if (!bgMusic) { if (onDone) onDone(); return; }
+    if (bgFadeTimer) { clearInterval(bgFadeTimer); bgFadeTimer = null; }
+    var start = bgMusic.volume;
+    var startTime = Date.now();
+    bgFadeTimer = setInterval(function() {
+      var t = Math.min(1, (Date.now() - startTime) / duration);
+      bgMusic.volume = start + (target - start) * t;
+      if (t >= 1) {
+        clearInterval(bgFadeTimer);
+        bgFadeTimer = null;
+        if (onDone) onDone();
+      }
+    }, 100);
+  }
+
+  function cancelOutro() {
+    if (outroHoldTimer) { clearTimeout(outroHoldTimer); outroHoldTimer = null; }
+    if (bgFadeTimer) { clearInterval(bgFadeTimer); bgFadeTimer = null; }
+  }
+
+  function stopBgMusicHard() {
+    cancelOutro();
+    if (bgMusic) {
+      bgMusic.pause();
+      bgMusic.volume = BG_LOW;
+    }
+  }
+
+  function formatTrackTime(sec) {
+    if (!isFinite(sec) || isNaN(sec) || sec < 0) return '0:00';
+    var m = Math.floor(sec / 60);
+    var s = Math.floor(sec % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  items.forEach(function(item) {
+    var btn = item.querySelector('[data-play-btn]');
+    var audio = item.querySelector('[data-audio-item-src]');
+    var track = item.querySelector('[data-progress-track]');
+    var fill = item.querySelector('.track-progress-fill');
+    var thumb = item.querySelector('.track-progress-thumb');
+    var currentEl = item.querySelector('.track-time-current');
+    var durationEl = item.querySelector('.track-time-duration');
+    if (!btn || !audio) return;
+
+    function setProgress(pct) {
+      pct = Math.max(0, Math.min(100, pct));
+      if (fill) fill.style.width = pct + '%';
+      if (thumb) thumb.style.left = pct + '%';
+    }
+
+    function resetProgress() {
+      setProgress(0);
+      if (currentEl) currentEl.textContent = '0:00';
+    }
+
+    function finalizePlayer() {
+      resetProgress();
+      item.classList.remove('playing');
+      item.classList.remove('outro');
+      if (currentPlaying === item) currentPlaying = null;
+    }
+
+    audio.addEventListener('loadedmetadata', function() {
+      if (durationEl) durationEl.textContent = formatTrackTime(audio.duration);
+    });
+
+    audio.addEventListener('timeupdate', function() {
+      if (audio.duration) {
+        var pct = (audio.currentTime / audio.duration) * 100;
+        setProgress(pct);
+      }
+      if (currentEl) currentEl.textContent = formatTrackTime(audio.currentTime);
+    });
+
+    audio.addEventListener('ended', function() {
+      item.classList.add('outro');
+      if (!bgMusic) {
+        finalizePlayer();
+        return;
+      }
+      fadeBgMusicTo(BG_HIGH, FADE_UP_MS, function() {
+        outroHoldTimer = setTimeout(function() {
+          fadeBgMusicTo(BG_LOW, FADE_DOWN_MS, function() {
+            if (bgMusic) bgMusic.pause();
+          });
+          finalizePlayer();
+        }, HOLD_MS);
+      });
+    });
+
+    if (track) {
+      var isDragging = false;
+
+      function seekFromEvent(e) {
+        if (!audio.duration) return;
+        var rect = track.getBoundingClientRect();
+        var clientX = (e.touches ? e.touches[0].clientX : e.clientX);
+        var pct = (clientX - rect.left) / rect.width;
+        pct = Math.max(0, Math.min(1, pct));
+        audio.currentTime = pct * audio.duration;
+        setProgress(pct * 100);
+        if (currentEl) currentEl.textContent = formatTrackTime(audio.currentTime);
+      }
+
+      track.addEventListener('click', function(e) {
+        e.stopPropagation();
+        seekFromEvent(e);
+      });
+
+      track.addEventListener('mousedown', function(e) {
+        e.stopPropagation();
+        isDragging = true;
+        seekFromEvent(e);
+      });
+      document.addEventListener('mousemove', function(e) {
+        if (isDragging) seekFromEvent(e);
+      });
+      document.addEventListener('mouseup', function() {
+        isDragging = false;
+      });
+
+      track.addEventListener('touchstart', function(e) {
+        e.stopPropagation();
+        isDragging = true;
+        seekFromEvent(e);
+      }, {passive:true});
+      track.addEventListener('touchmove', function(e) {
+        if (isDragging) seekFromEvent(e);
+      }, {passive:true});
+      track.addEventListener('touchend', function() {
+        isDragging = false;
+      });
+    }
+
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+
+      if (item.classList.contains('outro')) {
+        stopBgMusicHard();
+        finalizePlayer();
+        return;
+      }
+
+      if (currentPlaying === item) {
+        audio.dataset.manualPause = '1';
+        audio.pause();
+        item.classList.remove('playing');
+        currentPlaying = null;
+        return;
+      }
+
+      if (currentPlaying) {
+        var prevAudio = currentPlaying.querySelector('[data-audio-item-src]');
+        if (prevAudio) {
+          prevAudio.dataset.manualPause = '1';
+          prevAudio.pause();
+        }
+        var prevFill = currentPlaying.querySelector('.track-progress-fill');
+        var prevThumb = currentPlaying.querySelector('.track-progress-thumb');
+        var prevCurrent = currentPlaying.querySelector('.track-time-current');
+        if (prevFill) prevFill.style.width = '0%';
+        if (prevThumb) prevThumb.style.left = '0%';
+        if (prevCurrent) prevCurrent.textContent = '0:00';
+        currentPlaying.classList.remove('playing');
+        currentPlaying.classList.remove('outro');
+      }
+
+      cancelOutro();
+      if (bgMusic) {
+        bgMusic.currentTime = 0;
+        bgMusic.volume = BG_LOW;
+        bgMusic.play().catch(function() {});
+      }
+
+      audio.currentTime = 0;
+      audio.play().catch(function() {});
+      item.classList.add('playing');
+      currentPlaying = item;
+    });
+
+    audio.addEventListener('pause', function() {
+      if (audio.dataset.manualPause === '1') {
+        audio.dataset.manualPause = '';
+        item.classList.remove('playing');
+        item.classList.remove('outro');
+        if (currentPlaying === item) {
+          stopBgMusicHard();
+          currentPlaying = null;
+        }
+      }
+    });
+
+    audio.addEventListener('play', function() {
+      items.forEach(function(other) {
+        if (other !== item) {
+          other.classList.remove('playing');
+          other.classList.remove('outro');
+          var otherAudio = other.querySelector('[data-audio-item-src]');
+          var otherFill = other.querySelector('.track-progress-fill');
+          var otherThumb = other.querySelector('.track-progress-thumb');
+          var otherCurrent = other.querySelector('.track-time-current');
+          if (otherAudio && !otherAudio.paused) {
+            otherAudio.dataset.manualPause = '1';
+            otherAudio.pause();
+          }
+          if (otherFill) otherFill.style.width = '0%';
+          if (otherThumb) otherThumb.style.left = '0%';
+          if (otherCurrent) otherCurrent.textContent = '0:00';
+        }
+      });
+      currentPlaying = item;
+    });
+  });
+
+  document.querySelectorAll('.like-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      btn.classList.toggle('liked');
+      btn.textContent = btn.classList.contains('liked') ? '❤' : '♡';
+    });
+  });
+})();
 </script>
 
 </body>
