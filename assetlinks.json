@@ -1,8 +1,0 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "app.vercel.oracoesdiarias.twa",
-        "sha256_cert_fingerprints": ["88:B0:DE:6E:52:02:B8:7C:F6:90:8E:CA:7C:64:10:50:92:A4:EB:E8:28:EA:FE:BA:AF:98:04:28:2B:AF:9C:19"]
-      }
-    }]
