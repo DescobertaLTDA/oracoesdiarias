@@ -45,7 +45,6 @@
       overflow: hidden;
     }
 
-    /* ===== BORDA SUPERIOR COM IMAGEM + OVERLAY ===== */
     .hero-top {
       position: relative;
       width: 100%;
@@ -96,7 +95,6 @@
       color: #d4af37;
     }
 
-    /* ===== CONTEÚDO DO FORMULÁRIO ===== */
     .login-content {
       flex: 1;
       display: flex;
@@ -389,6 +387,21 @@
       flex: 1;
       display: flex;
       flex-direction: column;
+    }
+
+    /* Spinner */
+    .spinner {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(0,0,0,0.15);
+      border-top: 2px solid #000000;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
     @media (max-height: 640px) {
@@ -692,15 +705,17 @@
         if (!email || !pass) { loginError.textContent = 'Preencha todos os campos.'; return; }
         loginError.textContent = '';
         loginBtn.disabled = true;
-        loginBtn.innerHTML = 'Entrando <span class="arrow">…</span>';
+        loginBtn.innerHTML = 'Entrando <span class="spinner"></span>';
 
         try {
           const { data, error } = await supabase.auth.signInWithPassword({ email, password: pass });
           if (error) throw error;
+          
           showToast('Bem-vindo 🎉', `Olá ${data.user?.email?.split('@')[0] || 'usuário'}!`);
-          loginBtn.innerHTML = 'Entrar <span class="arrow">→</span>';
-          loginBtn.disabled = false;
-          setTimeout(redirectToApp, 600);
+          
+          // Redireciona após 500ms
+          setTimeout(redirectToApp, 500);
+
         } catch (err) {
           loginError.textContent = err.message || 'Erro ao entrar.';
           loginBtn.innerHTML = 'Entrar <span class="arrow">→</span>';
@@ -734,14 +749,18 @@
 
         registerError.textContent = '';
         registerBtn.disabled = true;
-        registerBtn.innerHTML = 'Criando <span class="arrow">…</span>';
+        registerBtn.innerHTML = 'Criando <span class="spinner"></span>';
 
         try {
           const { data, error } = await supabase.auth.signUp({
             email,
             password: pass,
-            options: { data: { name } }
+            options: { 
+              data: { name },
+              // Importante: isso só funciona se a confirmação de email estiver DESABILITADA no Supabase
+            }
           });
+          
           if (error) throw error;
 
           // Se o usuário já existe
@@ -754,8 +773,6 @@
 
           // ✅ CONTA CRIADA COM SUCESSO - REDIRECIONA DIRETO PARA O APP
           showToast('Conta criada! 🎉', 'Bem-vindo ao Orações Diárias!');
-          registerBtn.innerHTML = 'Criar conta <span class="arrow">→</span>';
-          registerBtn.disabled = false;
           
           // Limpa os campos
           registerName.value = '';
@@ -782,7 +799,7 @@
         if (!email) { resetError.textContent = 'Digite seu e-mail.'; return; }
         resetError.textContent = '';
         resetBtn.disabled = true;
-        resetBtn.innerHTML = 'Enviando <span class="arrow">…</span>';
+        resetBtn.innerHTML = 'Enviando <span class="spinner"></span>';
 
         try {
           const { error } = await supabase.auth.resetPasswordForEmail(email, {
